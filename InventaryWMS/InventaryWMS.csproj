@@ -1,0 +1,1237 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{C066DB30-05B4-4A9B-9184-A81224125630}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>InventaryWMS</RootNamespace>
+    <AssemblyName>InventaryWMS</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>\\192.168.101.100\Sistemas\Inventario\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>true</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>true</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <UpdateUrl>\\192.168.101.100\Sistemas\Inventario\</UpdateUrl>
+    <ProductName>InventaryWMS</ProductName>
+    <PublisherName>MakeWeb</PublisherName>
+    <MinimumRequiredVersion>1.0.2.7</MinimumRequiredVersion>
+    <WebPage>publish.htm</WebPage>
+    <AutorunEnabled>true</AutorunEnabled>
+    <ApplicationRevision>7</ApplicationRevision>
+    <ApplicationVersion>1.0.2.7</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>x64</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>1</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>13983175C2A87BD6586B3C65803B0C93B3F7763F</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>InventaryWMS_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>true</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>InventaryWMS.Program</StartupObject>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>m.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System">
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.8\System.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ActionButton.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ActionButton.Designer.cs">
+      <DependentUpon>ActionButton.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ActionButtonSm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ActionButtonSm.Designer.cs">
+      <DependentUpon>ActionButtonSm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AskRackLenght.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AskRackLenght.Designer.cs">
+      <DependentUpon>AskRackLenght.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Binnacle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Binnacle.Designer.cs">
+      <DependentUpon>Binnacle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CreateVirtualRack.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreateVirtualRack.Designer.cs">
+      <DependentUpon>CreateVirtualRack.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DatabaseTables.cs" />
+    <Compile Include="DataReport.cs" />
+    <Compile Include="DBConections.cs" />
+    <Compile Include="DeleteSQL.cs" />
+    <Compile Include="FormClientsWarehouses.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormClientsWarehouses.Designer.cs">
+      <DependentUpon>FormClientsWarehouses.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormInvoiceItem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormInvoiceItem.Designer.cs">
+      <DependentUpon>FormInvoiceItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormClientsProviders.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormClientsProviders.Designer.cs">
+      <DependentUpon>FormClientsProviders.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormCancelRemission.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormCancelRemission.Designer.cs">
+      <DependentUpon>FormCancelRemission.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormClient.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormClient.Designer.cs">
+      <DependentUpon>FormClient.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormDestinations.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormDestinations.Designer.cs">
+      <DependentUpon>FormDestinations.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormEmails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormEmails.Designer.cs">
+      <DependentUpon>FormEmails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormInventory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormInventory.Designer.cs">
+      <DependentUpon>FormInventory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormInvoice.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormInvoice.Designer.cs">
+      <DependentUpon>FormInvoice.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormLogin.Designer.cs">
+      <DependentUpon>FormLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormPermissions.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormPermissions.Designer.cs">
+      <DependentUpon>FormPermissions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormPopupWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormPopupWindow.Designer.cs">
+      <DependentUpon>FormPopupWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormProducts.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormProducts.Designer.cs">
+      <DependentUpon>FormProducts.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormReports.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormReports.Designer.cs">
+      <DependentUpon>FormReports.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormShowQuantity.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormShowQuantity.Designer.cs">
+      <DependentUpon>FormShowQuantity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormUser.Designer.cs">
+      <DependentUpon>FormUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormValidate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormValidate.Designer.cs">
+      <DependentUpon>FormValidate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormWarehouse.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormWarehouse.Designer.cs">
+      <DependentUpon>FormWarehouse.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InfoCard.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="InfoCard.Designer.cs">
+      <DependentUpon>InfoCard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Input.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Input.Designer.cs">
+      <DependentUpon>Input.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InputForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InputForm.Designer.cs">
+      <DependentUpon>InputForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InsertSQL.cs" />
+    <Compile Include="LoadingSpinner.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="LoadingSpinner.Designer.cs">
+      <DependentUpon>LoadingSpinner.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LocateProducts.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LocateProducts.Designer.cs">
+      <DependentUpon>LocateProducts.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LocationReport.cs" />
+    <Compile Include="Main.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Main.Designer.cs">
+      <DependentUpon>Main.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InventaryTransfer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InventaryTransfer.Designer.cs">
+      <DependentUpon>InventaryTransfer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ManageWarehouses.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ManageWarehouses.Designer.cs">
+      <DependentUpon>ManageWarehouses.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migracion.cs" />
+    <Compile Include="OrderByOuput.cs">
+      <DependentUpon>OrderByOuput.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Output.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Output.Designer.cs">
+      <DependentUpon>Output.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Product.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Product.Designer.cs">
+      <DependentUpon>Product.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="RackInfoCard.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="RackInfoCard.Designer.cs">
+      <DependentUpon>RackInfoCard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RackView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RackView.Designer.cs">
+      <DependentUpon>RackView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reports.Designer.cs">
+      <DependentUpon>Reports.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Security.cs" />
+    <Compile Include="SelectSQL.cs" />
+    <Compile Include="SystemConfiguration.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SystemConfiguration.Designer.cs">
+      <DependentUpon>SystemConfiguration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UpdateSQL.cs" />
+    <Compile Include="VerticalLabel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="VerticalLabel.Designer.cs">
+      <DependentUpon>VerticalLabel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WarehouseCard.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="WarehouseCard.Designer.cs">
+      <DependentUpon>WarehouseCard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WarehouseRacks.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WarehouseRacks.Designer.cs">
+      <DependentUpon>WarehouseRacks.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WMS_NEWDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WMS_NEWDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="WMS_REIS_NEWDataSet1.cs">
+      <DependentUpon>WMS_REIS_NEWDataSet1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="WMS_REIS_NEWDataSet2.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WMS_REIS_NEWDataSet2.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="WMS_REIS_NEWDataSet3.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WMS_REIS_NEWDataSet3.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="WMS_REIS_NEWDataSet5.cs">
+      <DependentUpon>WMS_REIS_NEWDataSet5.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="WorkOrder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WorkOrder.Designer.cs">
+      <DependentUpon>WorkOrder.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="ActionButtonSm.resx">
+      <DependentUpon>ActionButtonSm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AskRackLenght.resx">
+      <DependentUpon>AskRackLenght.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Binnacle.resx">
+      <DependentUpon>Binnacle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CreateVirtualRack.resx">
+      <DependentUpon>CreateVirtualRack.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormClientsWarehouses.resx">
+      <DependentUpon>FormClientsWarehouses.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormInvoiceItem.resx">
+      <DependentUpon>FormInvoiceItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormClientsProviders.resx">
+      <DependentUpon>FormClientsProviders.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormCancelRemission.resx">
+      <DependentUpon>FormCancelRemission.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormClient.resx">
+      <DependentUpon>FormClient.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormDestinations.resx">
+      <DependentUpon>FormDestinations.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormEmails.resx">
+      <DependentUpon>FormEmails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormInventory.resx">
+      <DependentUpon>FormInventory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormInvoice.resx">
+      <DependentUpon>FormInvoice.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormLogin.resx">
+      <DependentUpon>FormLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormPermissions.resx">
+      <DependentUpon>FormPermissions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormPopupWindow.resx">
+      <DependentUpon>FormPopupWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormProducts.resx">
+      <DependentUpon>FormProducts.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormReports.resx">
+      <DependentUpon>FormReports.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormShowQuantity.resx">
+      <DependentUpon>FormShowQuantity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormUser.resx">
+      <DependentUpon>FormUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormValidate.resx">
+      <DependentUpon>FormValidate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InfoCard.resx">
+      <DependentUpon>InfoCard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Input.rdlc" />
+    <EmbeddedResource Include="Input.resx">
+      <DependentUpon>Input.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InputCompressed.rdlc" />
+    <EmbeddedResource Include="InputDown.rdlc" />
+    <EmbeddedResource Include="InputForm.resx">
+      <DependentUpon>InputForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Inventario.rdlc" />
+    <EmbeddedResource Include="Pullreport.rdlc" />
+    <EmbeddedResource Include="Recibo.rdlc" />
+    <EmbeddedResource Include="LoadingSpinner.resx">
+      <DependentUpon>LoadingSpinner.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LocateProducts.resx">
+      <DependentUpon>LocateProducts.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Main.resx">
+      <DependentUpon>Main.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InventaryTransfer.resx">
+      <DependentUpon>InventaryTransfer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ManageWarehouses.resx">
+      <DependentUpon>ManageWarehouses.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Orden.rdlc" />
+    <EmbeddedResource Include="Output.resx">
+      <DependentUpon>Output.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Product.resx">
+      <DependentUpon>Product.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="as.rdlc" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Productos.rdlc" />
+    <EmbeddedResource Include="RackInfoCard.resx">
+      <DependentUpon>RackInfoCard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RackView.resx">
+      <DependentUpon>RackView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Proforma.rdlc" />
+    <EmbeddedResource Include="Remision.rdlc" />
+    <EmbeddedResource Include="Reports.resx">
+      <DependentUpon>Reports.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report.rdlc" />
+    <EmbeddedResource Include="SystemConfiguration.resx">
+      <DependentUpon>SystemConfiguration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ubicacion.rdlc" />
+    <EmbeddedResource Include="WarehouseCard.resx">
+      <DependentUpon>WarehouseCard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WarehouseRacks.resx">
+      <DependentUpon>WarehouseRacks.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WorkOrder.resx">
+      <DependentUpon>WorkOrder.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="InventaryWMS_TemporaryKey.pfx" />
+    <None Include="OrderByOuput.xsc">
+      <DependentUpon>OrderByOuput.xsd</DependentUpon>
+    </None>
+    <None Include="OrderByOuput.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="OrderByOuput.xss">
+      <DependentUpon>OrderByOuput.xsd</DependentUpon>
+    </None>
+    <None Include="Properties\DataSources\DataReport.datasource" />
+    <None Include="Properties\DataSources\Input.datasource" />
+    <None Include="Properties\DataSources\LocationReport.datasource" />
+    <None Include="Properties\DataSources\ReisWMS.WMS_REIS_NEWDataSet1TableAdapters.INVOICE_ITEMSTableAdapter.datasource" />
+    <None Include="Properties\DataSources\ReisWMS.WMS_REIS_NEWDataSet1TableAdapters.PRODUCTSTableAdapter.datasource" />
+    <None Include="Properties\DataSources\ReisWMS.WMS_REIS_NEWDataSet1TableAdapters.TableAdapterManager+UpdateOrderOption.datasource" />
+    <None Include="Properties\DataSources\ReisWMS.WMS_REIS_NEWDataSet1TableAdapters.TableAdapterManager.datasource" />
+    <None Include="Properties\DataSources\ReisWMS.WMS_REIS_NEWDataSet4TableAdapters.CLIENTSTableAdapter.datasource" />
+    <None Include="Properties\DataSources\ReisWMS.WMS_REIS_NEWDataSet4TableAdapters.TableAdapterManager+UpdateOrderOption.datasource" />
+    <None Include="Properties\DataSources\ReisWMS.WMS_REIS_NEWDataSet4TableAdapters.TableAdapterManager.datasource" />
+    <None Include="Properties\DataSources\SelectSQL.datasource" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <None Include="ReisWMS_TemporaryKey.pfx" />
+    <None Include="WMS_NEWDataSet.xsc">
+      <DependentUpon>WMS_NEWDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="WMS_NEWDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>WMS_NEWDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="WMS_NEWDataSet.xss">
+      <DependentUpon>WMS_NEWDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="WMS_REIS_NEWDataSet1.xsc">
+      <DependentUpon>WMS_REIS_NEWDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="WMS_REIS_NEWDataSet1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="WMS_REIS_NEWDataSet1.xss">
+      <DependentUpon>WMS_REIS_NEWDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="WMS_REIS_NEWDataSet2.xsc">
+      <DependentUpon>WMS_REIS_NEWDataSet2.xsd</DependentUpon>
+    </None>
+    <None Include="WMS_REIS_NEWDataSet2.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>WMS_REIS_NEWDataSet2.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="WMS_REIS_NEWDataSet2.xss">
+      <DependentUpon>WMS_REIS_NEWDataSet2.xsd</DependentUpon>
+    </None>
+    <None Include="WMS_REIS_NEWDataSet3.xsc">
+      <DependentUpon>WMS_REIS_NEWDataSet3.xsd</DependentUpon>
+    </None>
+    <None Include="WMS_REIS_NEWDataSet3.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>WMS_REIS_NEWDataSet3.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="WMS_REIS_NEWDataSet3.xss">
+      <DependentUpon>WMS_REIS_NEWDataSet3.xsd</DependentUpon>
+    </None>
+    <None Include="WMS_REIS_NEWDataSet4.xsc">
+      <DependentUpon>WMS_REIS_NEWDataSet4.xsd</DependentUpon>
+    </None>
+    <None Include="WMS_REIS_NEWDataSet4.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="WMS_REIS_NEWDataSet4.xss">
+      <DependentUpon>WMS_REIS_NEWDataSet4.xsd</DependentUpon>
+    </None>
+    <None Include="WMS_REIS_NEWDataSet5.xsc">
+      <DependentUpon>WMS_REIS_NEWDataSet5.xsd</DependentUpon>
+    </None>
+    <None Include="WMS_REIS_NEWDataSet5.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="WMS_REIS_NEWDataSet5.xss">
+      <DependentUpon>WMS_REIS_NEWDataSet5.xsd</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="stdole">
+      <Guid>{00020430-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\Images\icons8-abrir-carpeta-64.png" />
+    <None Include="bin\Debug\Images\icons8-abrir-carpeta-24.png" />
+    <None Include="bin\Debug\Images\icons8-apagar-24.png" />
+    <None Include="bin\Debug\Images\icons8-cancelar-12.png" />
+    <None Include="bin\Debug\Images\icons8-cancelar-20.png" />
+    <None Include="bin\Debug\Images\icons8-carpeta-de-descargas-24.png" />
+    <None Include="bin\Debug\Images\icons8-carpeta-de-descargas-64.png" />
+    <None Include="bin\Debug\Images\icons8-cerrar-ventana-48.png" />
+    <None Include="bin\Debug\Images\icons8-cerrar-ventana-64.png" />
+    <None Include="bin\Debug\Images\icons8-configuración-24.png" />
+    <None Include="bin\Debug\Images\icons8-configuración-64.png" />
+    <None Include="bin\Debug\Images\icons8-configuración-de-datos-24.png" />
+    <None Include="bin\Debug\Images\icons8-configuración-de-datos-64.png" />
+    <None Include="bin\Debug\Images\icons8-editar-archivo-24.png" />
+    <None Include="bin\Debug\Images\icons8-editar-archivo-64.png" />
+    <None Include="bin\Debug\Images\icons8-eliminar-38.png" />
+    <None Include="bin\Debug\Images\icons8-eliminar-64.png" />
+    <None Include="bin\Debug\Images\icons8-empresa-24.png" />
+    <None Include="bin\Debug\Images\icons8-empresa-64.png" />
+    <None Include="bin\Debug\Images\icons8-encender-24.png" />
+    <None Include="bin\Debug\Images\icons8-encender-64.png" />
+    <None Include="bin\Debug\Images\icons8-entrada-24.png" />
+    <None Include="bin\Debug\Images\icons8-entrada-64.png" />
+    <None Include="bin\Debug\Images\icons8-guardar-como-38.png" />
+    <None Include="bin\Debug\Images\icons8-guardar-como-64.png" />
+    <None Include="bin\Debug\Images\icons8-lupa-38.png" />
+    <None Include="bin\Debug\Images\icons8-lupa-64.png" />
+    <None Include="bin\Debug\Images\icons8-maximizar-la-ventana-24.png" />
+    <None Include="bin\Debug\Images\icons8-maximizar-la-ventana-64.png" />
+    <None Include="bin\Debug\Images\icons8-ms-excel-24.png" />
+    <None Include="bin\Debug\Images\icons8-ms-excel-64.png" />
+    <None Include="bin\Debug\Images\icons8-pdf-24.png" />
+    <None Include="bin\Debug\Images\icons8-pdf-64.png" />
+    <None Include="bin\Debug\Images\icons8-usuario-24.png" />
+    <None Include="bin\Debug\Images\icons8-usuario-64.png" />
+    <None Include="bin\Debug\Images\icons8-ver-archivo-24.png" />
+    <None Include="bin\Debug\Images\icons8-ver-archivo-64.png" />
+    <None Include="bin\Debug\Images\icons8-wifi-apagado-24.png" />
+    <None Include="bin\Debug\Images\icons8-wifi-apagado-64.png" />
+    <None Include="bin\Debug\Images\icons8-wi-fi-conectado-24.png" />
+    <None Include="bin\Debug\Images\icons8-wi-fi-conectado-64.png" />
+    <None Include="bin\Debug\Images\internet.png" />
+    <None Include="bin\Debug\Images\lista-de-verificacion.png" />
+    <None Include="bin\Debug\Images\LOGO REIS RGB.png" />
+    <None Include="bin\Debug\Images\no-wifi.png" />
+    <None Include="bin\Debug\Images\sin-internet.png" />
+    <None Include="bin\Debug\Images\icons8-apagar-64.png" />
+    <None Include="bin\Debug\Images\icons8-cancelar-64.png" />
+    <None Include="bin\Debug\Images\icons8-cancelar-38.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Common.CheckComboBox">
+      <Version>1.0.0</Version>
+    </PackageReference>
+    <PackageReference Include="log4net">
+      <Version>2.0.15</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.AnalysisServices.Server">
+      <Version>13.0.1601.5</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.ReportingServices.ReportViewerControl.WebForms">
+      <Version>140.1000.523</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.ReportingServices.ReportViewerControl.WinForms">
+      <Version>150.1586.0</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.SqlServer.Types">
+      <Version>160.1000.6</Version>
+    </PackageReference>
+    <PackageReference Include="ZXing.Net">
+      <Version>0.16.9</Version>
+    </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.8">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.8 %28x86 y x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.NetCore.CoreRuntime.8.0.x86">
+      <Visible>False</Visible>
+      <ProductName>.NET Runtime 8.0.8 %28x86%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.NetCore.DesktopRuntime.8.0.x86">
+      <Visible>False</Visible>
+      <ProductName>Entorno de ejecución de escritorio de .NET 8.0.8 %28x86%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.SqlServer.SQLSysClrTypes.12.0.x86">
+      <Visible>False</Visible>
+      <ProductName>Microsoft® System CLR Types for SQL Server® 2014 %28x86%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\grupoabg.png" />
+    <Content Include="icons8-almacenar-100.ico" />
+    <Content Include="m.ico" />
+    <Content Include="m_preview_rev_1.ico" />
+    <Content Include="Resources\icon-down.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="Resources\Logo_preview_rev_1 %282%29.png" />
+    <None Include="Resources\Logo.png" />
+    <None Include="Resources\icons8-clasificar-abajo-64.png" />
+    <None Include="Resources\icons8-aceptar-64.png" />
+    <None Include="Resources\m_preview_rev_1.png" />
+    <Content Include="Resources\warehouse.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\add-row.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\document-svg.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\delete-svg.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\done-svg.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\excel-icon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\clean-svg.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\edit_svg.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\paste-svg.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ok-list-svg.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\logo-reis.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Help_image.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\rack-view.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\help-icon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\info-icon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\cancel-icon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ok-icon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ok-neutral-icon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\clear-list.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\calcel-icon-red.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\link-icon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\add-component.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\rack-icon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\rack-2-icon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\cancel_icon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\edit_icon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\search-icon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\abrir-documento.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\carpeta.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\cerrar2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\editar %281%29.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\icons8-abrir-carpeta-24.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\icons8-abrir-carpeta-64.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\icons8-apagar-24.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\icons8-apagar-64.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\icons8-aprobación-38.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\icons8-cancelar-12.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\icons8-cancelar-20.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\icons8-cancelar-38.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\icons8-cancelar-64.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\icons8-carpeta-de-descargas-24.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\icons8-carpeta-de-descargas-64.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\icons8-cerrar-ventana-24.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\icons8-cerrar-ventana-48.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\icons8-cerrar-ventana-64.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\icons8-configuración-24.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\icons8-configuración-64.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\icons8-configuración-de-datos-24.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\icons8-configuración-de-datos-64.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\icons8-editar-archivo-24.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\icons8-editar-archivo-64.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\icons8-eliminar-38.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\icons8-eliminar-64.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\icons8-empresa-24.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\icons8-empresa-64.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\icons8-encender-24.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\icons8-encender-64.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\icons8-entrada-24.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\icons8-entrada-64.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\icons8-guardar-como-38.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\icons8-guardar-como-64.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\icons8-lupa-38.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\icons8-lupa-64.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\icons8-maximizar-la-ventana-24.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\icons8-maximizar-la-ventana-64.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\icons8-ms-excel-24.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\icons8-ms-excel-64.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\icons8-pdf-24.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\icons8-pdf-64.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\icons8-usuario-24.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\icons8-usuario-64.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\icons8-ver-archivo-24.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\icons8-ver-archivo-64.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\icons8-wifi-apagado-24.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\icons8-wifi-apagado-64.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\icons8-wi-fi-conectado-24.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\icons8-wi-fi-conectado-64.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\internet.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\lista-de-verificacion.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\LOGO REIS RGB.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\no-wifi.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\sin-internet.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\svg-path %2824%29.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\svg-path-_12_.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\svg-path-_14_.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\svg-path-_6_.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\aceptar.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\agregar-producto.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\boton-x.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\cargando.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\codigo-de-barras.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\eliminar-producto.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\escaner-de-codigo-de-barras.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\guardar-el-archivo.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\imprimir.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\pagina-web.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\reporte.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\svg-path-_15_.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\Images\icons8-orden-64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\flecha-hacia-abajo.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\svg-path-_21_.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\Images\icons8-abajo-círculo-64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\Images\icons8-trabajo-64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <PublishFile Include="EnvDTE">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Microsoft.MSXML">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Microsoft.ReportViewer.Common.resources">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Microsoft.ReportViewer.DataVisualization.resources">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Microsoft.ReportViewer.Design.resources">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Microsoft.ReportViewer.WebDesign.resources">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Microsoft.ReportViewer.WebForms.resources">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Microsoft.ReportViewer.WinForms.resources">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Microsoft.VisualStudio.OLE.Interop">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Microsoft.VisualStudio.Shell.Interop">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Microsoft.VisualStudio.Shell.Interop.8.0">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Microsoft.VisualStudio.TextManager.Interop">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Microsoft.VisualStudio.TextManager.Interop.8.0">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="stdole">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
