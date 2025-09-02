@@ -114,7 +114,7 @@ namespace InventaryWMS
         {
             // Agregar columnas a la DataTable
             miDataTable.Columns.Add("Código", typeof(string));
-            miDataTable.Columns.Add("NumeroParteCliente", typeof(string));
+            miDataTable.Columns.Add("NumeroSerie", typeof(string));
             miDataTable.Columns.Add("Nombre", typeof(string));
             miDataTable.Columns.Add("Serie", typeof(string));
             miDataTable.Columns.Add("Cantidad", typeof(string));
@@ -342,6 +342,7 @@ namespace InventaryWMS
             int auxselect = SelectedRowNumber;
             bool invoiceready;
             invoiceready = selectsql.searchInvoice(textBoxInvoice.Text);
+            string[] partProduct = comboBoxProduct.Text.Split('|');
 
             if (invoiceready == false)
             {
@@ -352,8 +353,8 @@ namespace InventaryWMS
                     {
                         serial = "";
                         DataRow newrow = miDataTable.NewRow();
-                        newrow["Código"] = comboBoxProduct.Text;
-                        newrow["NumeroParteCliente"] = selectsql.GetPartClientwhitPartProvider(_idclient.ToString(), comboBoxProduct.Text);
+                        newrow["Código"] = partProduct[1].Trim();
+                        newrow["NumeroSerie"] = textBoxSerial.Text;
                         newrow["Nombre"] = textBoxNameProduct.Text;
                         newrow["Cantidad"] = 1;
                         newrow["Costo"] = textBoxCost.Text;
@@ -373,7 +374,7 @@ namespace InventaryWMS
                         else
                             newrow["Lote"] = textBoxBatch.Text;
                         newrow["Piezas"] = textBoxParts.Text;
-                        idmeasuring = selectsql.GetidMeasuring_unit(_idclient.ToString(), comboBoxProduct.Text);
+                        idmeasuring = selectsql.GetidMeasuring_unit(_idclient.ToString(), partProduct[1].Trim());
                         abre = selectsql.GetAbreviationMeasuring_unit(idmeasuring);
                         newrow["Unidad"] = abre;
                         newrow["Bodega"] = comboBoxStore.Text;
@@ -1418,7 +1419,7 @@ namespace InventaryWMS
                                     DataRow newrow = compressed.NewRow();
                                     string idmeasuring;
                                     newrow["Código"] = row["Código"].ToString();
-                                    newrow["NumeroParteCliente"] = row["NumeroParteCliente"].ToString();
+                                    newrow["NumeroSerie"] = row["NumeroSerie"].ToString();
                                     newrow["Nombre"] = row["Nombre"].ToString();
                                     newrow["Piezas"] = row["Piezas"].ToString();
                                     newrow["Unidad"] = row["Unidad"].ToString();
@@ -1548,7 +1549,7 @@ namespace InventaryWMS
                                         DataRow newrow = compressed.NewRow();
                                         string idmeasuring;
                                         newrow["Código"] = row["Código"].ToString();
-                                        newrow["NumeroParteCliente"] = row["NumeroParteCliente"].ToString();
+                                        newrow["NumeroSerie"] = row["NumeroSerie"].ToString();
                                         newrow["Nombre"] = row["Nombre"].ToString();
                                         newrow["Piezas"] = row["Piezas"].ToString();
                                         newrow["Unidad"] = row["Unidad"].ToString();
@@ -1728,14 +1729,20 @@ namespace InventaryWMS
                 double price;
                 double cost;
                 double itemsbox;
+                string[] partProduct = comboBoxProduct.Text.Split('|');
                 textBoxSerial.Clear();
-                selectsql.SerialATextBox(textBoxSerial, _idclient, comboBoxProduct.Text);
+                // Pseudocódigo:
+                // 1. Localizar la línea: selectsql.SerialATextBox(textBoxSerial, _idclient, partProduct[1]);
+                // 2. Antes de pasar partProduct[1], quitarle los espacios en blanco con .Trim().
+                // 3. Reemplazar la línea original por la nueva.
+
+                selectsql.SerialATextBox(textBoxSerial, _idclient, partProduct[1].Trim());
                 textBoxNameProduct.Clear();
-                selectsql.ProductsATextBox(textBoxNameProduct, _idclient, comboBoxProduct.Text);
+                selectsql.ProductsATextBox(textBoxNameProduct, _idclient, partProduct[1].Trim());
                 textBoxCost.Clear();
-                selectsql.CostATextBox(textBoxCost, _idclient, comboBoxProduct.Text);
+                selectsql.CostATextBox(textBoxCost, _idclient, partProduct[1].Trim());
                 textBoxParts.Clear();
-                selectsql.ItemsPerBoxATextBox(textBoxParts, _idclient, comboBoxProduct.Text);
+                selectsql.ItemsPerBoxATextBox(textBoxParts, _idclient, partProduct[1].Trim());
                 textBoxPrice.Clear();
                 Double.TryParse(textBoxCost.Text, out cost);
                 Double.TryParse(textBoxParts.Text, out itemsbox);
@@ -1780,7 +1787,7 @@ namespace InventaryWMS
                         DataRow newrow = compressed.NewRow();
                         string idmeasuring;
                         newrow["Código"] = row["Código"].ToString();
-                        newrow["NumeroParteCliente"] = row["NumeroParteCliente"].ToString();
+                        newrow["NumeroSerie"] = row["NumeroSerie"].ToString();
                         newrow["Nombre"] = row["Nombre"].ToString();
                         newrow["Piezas"] = row["Piezas"].ToString();
                         idmeasuring = selectsql.GetidMeasuring_unit(_idclient.ToString(), row["Código"].ToString());

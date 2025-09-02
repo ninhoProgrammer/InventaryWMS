@@ -2556,13 +2556,13 @@ namespace InventaryWMS
             try
             {
                 _connection.Open();
-                SqlCommand cmd = new SqlCommand("SELECT PART_NUMBER_PROVIDER FROM [dbo].[PRODUCTS] WHERE IDCLIENTE = @IDCLINTE ", _connection);
+                SqlCommand cmd = new SqlCommand("SELECT PART_NUMBER_PROVIDER, DESCRIPTION  FROM [dbo].[PRODUCTS] WHERE IDCLIENTE = @IDCLINTE ", _connection);
                 cmd.Parameters.AddWithValue("@IDCLINTE", IDCLINTE);
                 _dr = cmd.ExecuteReader();
 
                 while (_dr.Read())
                 {
-                    COMBOBOX.Items.Add(_dr["PART_NUMBER_PROVIDER"].ToString());
+                    COMBOBOX.Items.Add(_dr["DESCRIPTION"].ToString() + " | " + _dr["PART_NUMBER_PROVIDER"].ToString() );
                     lis.Add(_dr["PART_NUMBER_PROVIDER"].ToString());
                 }
 
