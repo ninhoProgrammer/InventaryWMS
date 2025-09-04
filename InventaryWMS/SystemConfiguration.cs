@@ -12,7 +12,7 @@ namespace InventaryWMS
 {
     public partial class SystemConfiguration : Form
     {
-        Security security = new Security();
+        Security security { get; set; }
         public bool floatingWindow { get; set; }
         private bool _floating { get; set; }
         public bool colorWindow { get; set; }
@@ -22,6 +22,7 @@ namespace InventaryWMS
         public SystemConfiguration(bool fw, bool cw)
         {
             InitializeComponent();
+            security = new Security();
             string con = security.createFile("conections.txt");
             
             string[] conectionsString = con.Split('|');

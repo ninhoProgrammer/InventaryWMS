@@ -8,10 +8,9 @@ namespace InventaryWMS
     {
         #region Variabls and triggers
         Main mainForm;
-        SelectSQL selectSQL = new SelectSQL();
-        InsertSQL insertSQL = new InsertSQL();
-        UpdateSQL updateSQL = new UpdateSQL();
-        DeleteSQL deleteSQL = new DeleteSQL();
+        SelectSQL selectSQL { get; set; }
+        InsertSQL insertSQL { get; set; }
+        UpdateSQL updateSQL { get; set; }
         Clients client { get; set; }
         private bool _valid { get; set; }
         private bool _new { get; set; }
@@ -68,6 +67,9 @@ namespace InventaryWMS
 
         private void Inicialice()
         {
+            selectSQL = new SelectSQL();
+            insertSQL = new InsertSQL();
+            updateSQL = new UpdateSQL();
             client = new Clients();
             comboBoxContry.Items.Clear();
             this.Text = "Cliente";
@@ -122,7 +124,7 @@ namespace InventaryWMS
 
         }
 
-        private void buttonDelete_Click(object sender, EventArgs e)
+        /*private void buttonDelete_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show("¿Está seguro de eliminar el Usuario?", "Alerta se eliminara usuario", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             if (result == DialogResult.Yes)
@@ -130,7 +132,7 @@ namespace InventaryWMS
                 if (deleteSQL.DeleteClient(selectSQL.GetIdClientName(comboBoxClient.Text), comboBoxClient.Text))
                     Close();
             }
-        }
+        }*/
 
         private void buttonCancel_Click(object sender, EventArgs e)
         {

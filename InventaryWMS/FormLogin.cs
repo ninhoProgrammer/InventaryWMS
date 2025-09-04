@@ -8,7 +8,7 @@ namespace InventaryWMS
     {
         #region Variables and triggers
         SelectSQL selectSQL { get; set; }
-        Security security = new Security();
+        Security security { get; set; }
         private int _idUser { get; set; }
         private int _Count { get; set; }
         private bool _selectTrue { get; set; }
@@ -19,8 +19,10 @@ namespace InventaryWMS
         {
             InitializeComponent();
             selectSQL = new SelectSQL();
+            security = new Security();
             if (!selectSQL.CheckConections())
             {
+                
                 security.createFile("address.txt");
                 security.createFile("user.txt");
                 pictureBoxConfigurations.Visible = true;

@@ -9,7 +9,6 @@ namespace InventaryWMS
 {
     internal class Security
     {
-        static string addressClient = Path.GetFullPath(Path.Combine(Environment.CurrentDirectory, @"..\\..\\..\\address.txt"));
         private string _sesionPath { get; set; }
 
         public Security()

@@ -15,17 +15,15 @@ namespace InventaryWMS
     public partial class Output : Form
     {
         Main mainForm;
-        SelectSQL selectSQL = new SelectSQL();
-        InsertSQL insertSQL = new InsertSQL();
-        UpdateSQL updateSQL = new UpdateSQL();
-        DeleteSQL deleteSQL = new DeleteSQL();
-        Security security = new Security();
+        SelectSQL selectSQL { get; set; }
+        InsertSQL insertSQL { get; set; }
+        UpdateSQL updateSQL { get; set; }
+
         FormValidate formValidate { get; set; }
         WorkOrder form { get; set; }
         Configurations configurations { get; set; }
         private bool _saveFull { get; set; }
         List<string> eleme { get; set; }
-        string[] reportDate { get; set; }
         static string reportPath { get; set; }
         private bool _order { get; set; }
         private bool _up { get; set; }
@@ -62,6 +60,9 @@ namespace InventaryWMS
         {
             try
             {
+                selectSQL = new SelectSQL();
+                insertSQL = new InsertSQL();
+                updateSQL = new UpdateSQL();
                 //_idClient = int.Parse(security.createFile("address.txt"));
                 selectSQL.ProductsInNumPartAComboBox(comboBoxPart, _idClient);
                 comboBoxWare.SelectedIndex = 0;

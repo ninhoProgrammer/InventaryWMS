@@ -6,8 +6,8 @@ namespace InventaryWMS
     public partial class FormShowQuantity : Form
     {
 
-        Security security = new Security();
-        SelectSQL selectSQL = new SelectSQL();
+        Security security { get; set; }
+        SelectSQL selectSQL { get; set; }
         private int _idClient { get; set; }
         public string input { get; set; }
         public int quitity { get; set; }
@@ -16,6 +16,8 @@ namespace InventaryWMS
         public FormShowQuantity()
         {
             InitializeComponent();
+            security = new Security();
+            selectSQL = new SelectSQL();
             _idClient = int.Parse(security.createFile("address.txt"));
             selectSQL.RemissionLoadAComboBox(comboBoxRemission, _idClient);
             this.Text = "Salida";
