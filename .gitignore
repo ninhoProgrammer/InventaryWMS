@@ -152,23 +152,5 @@ project.lock.json
 #####
 # End of core ignore list, below put you custom 'per project' settings (patterns or path)
 #####
-#ReisWMS/obj/Debug/DesignTimeResolveAssemblyReferences.cache
-#ReisWMS/obj/Debug/DesignTimeResolveAssemblyReferences.cache
-#ReisWMS/bin/Debug/ReisWMS.exe
-#ReisWMS/bin/Debug/ReisWMS.exe.manifest
-#ReisWMS/bin/Debug/ReisWMS.pdb
-#ReisWMS/obj/Debug/DesignTimeResolveAssemblyReferences.cache
-#ReisWMS/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
-#ReisWMS/obj/Debug/ReisWMS.application
-#ReisWMS/obj/Debug/ReisWMS.csproj.AssemblyReference.cache
-#ReisWMS/obj/Debug/ReisWMS.csproj.CoreCompileInputs.cache
-#ReisWMS/obj/Debug/ReisWMS.csproj.FileListAbsolute.txt
-#ReisWMS/obj/Debug/ReisWMS.csproj.GenerateResource.cache
-#ReisWMS/obj/Debug/ReisWMS.exe
-#ReisWMS/obj/Debug/ReisWMS.exe.manifest
-#ReisWMS/obj/Debug/ReisWMS.pdb
-#ReisWMS/obj/Debug/TempPE/WMS_REIS_NEWDataSet1.Designer.cs.dll
-#ReisWMS/obj/Debug/TempPE/WMS_REIS_NEWDataSet5.Designer.cs.dll
-#ReisWMS/obj/project.assets.json
-#ReisWMS/obj/project.nuget.cache
-#ReisWMS/obj/ReisWMS.csproj.nuget.dgspec.json
+Inventario/Application 
+/Inventario/Application Files

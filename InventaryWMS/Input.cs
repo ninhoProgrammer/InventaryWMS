@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Drawing.Printing;
 using System.IO;
@@ -14,13 +15,13 @@ namespace InventaryWMS
 {
     public partial class Input : Form
     {
+        #region Variable and Objects
         static string imagenClick = Path.GetFullPath(Path.Combine(Environment.CurrentDirectory, @"..\\..\\Resources\grupoabg.png"));
         private PrintDocument printDocument1 = new PrintDocument();
-        List<string> eleme = new List<string>();
+        List<string> eleme { get; set; }
         SelectSQL selectsql = new SelectSQL();
         InsertSQL insertsql = new InsertSQL();
         DateTime currentdate = DateTime.Today;
-        Security security = new Security();
         private int valueserial;
         DataTable miDataTable { get; set; }
         Main mainForm { get; set; }
@@ -52,49 +53,37 @@ namespace InventaryWMS
             _iduser = iduser;
             _idclient = idclient;
             Inicialice();
+
         }
 
         private void Inicialice()
         {
+            // 1. Inicialización de variables y datos
             inicilizeForm(false);
             miDataTable = new DataTable();
+            eleme = new List<string>();
             valueserial = 0;
             discount = 0.0;
             idwarehouse = 0;
             etiquetaActual = 0;
             SelectedRowNumber = -1;
-            Task.Run(() =>
-            {
-                
-                this.Invoke((Action)(() =>
-                {
-                    dateTimePickerReception.Text = currentdate.ToString();
-                    dateTimePickerPay.Text = currentdate.ToString();
-                    dateTimePickerExpires.Value = DateTime.Now.AddYears(+1);
-                    //temporaryDataTable = miDataTable.Clone();
-                    
-                    fillComboBox();
-                    // Configura el autocompletado en el TextBox con los elementos del ComboBox
-                    //textBox2.AutoCompleteMode = AutoCompleteMode.Suggest;
-                    //textBox2.AutoCompleteSource = AutoCompleteSource.CustomSource;
-                    dataGridViewInputs.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-                    // Agrega los elementos del ComboBox al AutoCompleteCustomSource del TextBox
-                    /*foreach (var item in comboBoxProduct.Items)
-                    {
-                        textBox2.AutoCompleteCustomSource.Add(item.ToString());
-                    }*/
-                    printDocument1.PrintPage += new PrintPageEventHandler(printDocument1_PrintPage);
-                    comboBoxStore.SelectedIndex = 0;
-                    //
-                    buttonEneble(false);
-                    //Por si le dan de nuevo al boton y contienen 
-                    inicializeButton(false);
-                    buttonAdd.Enabled = true;
-                    fillDataGrid();
-                }));
-            });
-        }
 
+            // 2. Inicialización de la interfaz de usuario (UI)
+            SetDefaultControlValues();
+            ConfigureDataGridView();
+            ConfigurePrintDocument();
+
+            // 3. Llenar los controles con datos
+            // Estas operaciones deben ser rápidas. Si no lo son, se deben mover a un método asíncrono.
+            fillComboBox();
+            fillDataGrid();
+
+            // 4. Configurar el estado final de los botones
+            buttonEneble(false);
+            inicializeButton(false);
+            buttonAdd.Enabled = true;
+        }
+        #endregion
         public void inicilizeForm(bool form)
         {
             //taProducts = new DataGridView();
@@ -178,11 +167,11 @@ namespace InventaryWMS
         private bool fullComboBoxProduct()
         {
             comboBoxProduct.Items.Clear();
-            comboBoxProduct.AutoCompleteMode = AutoCompleteMode.Suggest;
-            comboBoxProduct.AutoCompleteSource = AutoCompleteSource.CustomSource;
+            
             selectsql.IdProductsAComboBox(comboBoxProduct, _idclient, eleme);
             //selectsql.ProvidersAComboBox(comboBoxProviders, _idclient);
-
+            comboBoxProduct.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            comboBoxProduct.AutoCompleteSource = AutoCompleteSource.ListItems;
             if (comboBoxProduct.Items.Count > 0)
             {
                 return true;
@@ -209,7 +198,7 @@ namespace InventaryWMS
             {
                 comboBoxProviders.SelectedIndex = 0;
                 comboBoxRegimen.SelectedIndex = 1;
-                
+
                 dateTimePickerPedimento.Value = DateTime.Now.AddDays(-1);
                 selectsql.UserATextBox(textBox1, _iduser);
                 lastserial = selectsql.GetLastSerial();
@@ -230,7 +219,7 @@ namespace InventaryWMS
         private bool fullComboBoxWarehouse()
         {
             comboBoxLocation.Items.Clear();
-            comboBoxLocation.AutoCompleteMode = AutoCompleteMode.Suggest;
+            comboBoxLocation.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
             comboBoxLocation.AutoCompleteSource = AutoCompleteSource.ListItems;
             selectsql.WarehouseAComboBox(comboBoxLocation);
             //comboBoxProduct.AutoCompleteMode = AutoCompleteMode.Suggest;
@@ -250,12 +239,12 @@ namespace InventaryWMS
             {
                 return false;
             }
-            
+
         }
 
         private void Input_Load(object sender, EventArgs e)
         {
-            
+
         }
 
         private void dateTimePicker1_ValueChanged_1(object sender, EventArgs e)
@@ -264,36 +253,6 @@ namespace InventaryWMS
         }
 
         private void splitContainer1_Panel2_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void textBox7_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void buttonSave_Click(object sender, EventArgs e)
-        {
-            /* warehouse = comboBoxWarehouse.SelectedItem.ToString();
-             number_parts = textBoxParts.Text;
-             invoice = textBoxRFC.Text;
-             description = textBoxDescription.Text;
-             pedimento = textBoxPedimento.Text;
-             serial = textBoxSerial.Text;
-             //amount = textBoxAmount.Text;
-             batch = textBoxBatch.Text;
-             box = textBoxBox.Text;
-             //revision = textBoxRevision.Text;
-             //pallet = comboBoxPallet.SelectedItem.ToString();
-             //bulk = textBoxBulk.Text;
-             //location = textBoxLocation.Text;
-             provider = comboBox_Providers.SelectedItem.ToString();
-             MessageBox.Show(provider);*/
-
-        }
-
-        private void textBox2_TextChanged(object sender, EventArgs e)
         {
 
         }
@@ -335,135 +294,44 @@ namespace InventaryWMS
 
         private void buttonAdd_Click(object sender, EventArgs e)
         {
-            int integervalue;
-            string date;
-            string idmeasuring;
-            string abre;
-            int auxselect = SelectedRowNumber;
-            bool invoiceready;
-            invoiceready = selectsql.searchInvoice(textBoxInvoice.Text);
-            string[] partProduct = comboBoxProduct.Text.Split('|');
-
-            if (invoiceready == false)
+            // 1. Validar la factura
+            if (selectsql.searchInvoice(textBoxInvoice.Text))
             {
-                //fillComboBox();
-                if (int.TryParse(textBoxBox.Text, out integervalue))
-                {
-                    for (int i = 0; i < integervalue; i++)
-                    {
-                        serial = "";
-                        DataRow newrow = miDataTable.NewRow();
-                        newrow["Código"] = partProduct[1].Trim();
-                        newrow["NumeroSerie"] = textBoxSerial.Text;
-                        newrow["Nombre"] = textBoxNameProduct.Text;
-                        newrow["Cantidad"] = 1;
-                        newrow["Costo"] = textBoxCost.Text;
-                        newrow["Precio"] = textBoxPrice.Text;
-                        date = dateTimePickerExpires.Value.ToString("yyyy-MM-dd HH:mm:ss");
-                        newrow["Caduca"] = date;
-                        serial = selectsql.GetPrefixClients(_idclient);
-                        serial += currentdate.ToString("yyMMdd");
-                        serial += "ABCD-";
-                        valueserial += 1;
-                        serial += valueserial.ToString("D4");
-                        newrow["Serie"] = serial;
-                        newrow["Pedimento"] = textBoxPedimento.Text;
-                        newrow["Ubicación"] = comboBoxLocation.Text;
-                        if (textBoxBatch.Text == "")
-                            newrow["Lote"] = "S/L";
-                        else
-                            newrow["Lote"] = textBoxBatch.Text;
-                        newrow["Piezas"] = textBoxParts.Text;
-                        idmeasuring = selectsql.GetidMeasuring_unit(_idclient.ToString(), partProduct[1].Trim());
-                        abre = selectsql.GetAbreviationMeasuring_unit(idmeasuring);
-                        newrow["Unidad"] = abre;
-                        newrow["Bodega"] = comboBoxStore.Text;
-                        newrow["Factura"] = textBoxInvoice.Text;
-                        newrow["Provedor"] = comboBoxProviders.Text;
-                        newrow["Regimen"] = comboBoxRegimen.Text;
-                        date = dateTimePickerPedimento.Value.ToString("yyyy-MM-dd HH:mm:ss");
-                        newrow["FechaPedimento"] = date;
-                        newrow["Contenedor"] = comboBoxContainer.Text;
-                        date = dateTimePickerReception.Value.ToString("yyyy-MM-dd HH:mm:ss");
-                        newrow["FechaRecepcion"] = date;
-                        date = dateTimePickerPay.Value.ToString("yyyy-MM-dd HH:mm:ss");
-                        newrow["FechaPagar"] = date;
-                        newrow["Remision"] = textBoxRemission.Text;
-                        newrow["Transporte"] = comboBoxTransport.Text;
-                        // Establece los valores de otras columnas según sea necesario.
-                        if (miDataTable.Rows.Count > 0 && checkBoxinsertar.Checked == true && auxselect != -1)
-                        {
-                            auxselect++;
-                            miDataTable.Rows.InsertAt(newrow, auxselect);
-                        }
-                        else
-                        {
-                            miDataTable.Rows.Add(newrow);
-                        }
-                        if (checkBoxImprimir.Checked == true)
-                        {
-                            DataRow miDataRow = miDataTable.Rows[miDataTable.Rows.Count - 1];
-                            // DataRow nuevoDataRow = temporaryDataTable.NewRow();
-                            //nuevoDataRow.ItemArray = miDataRow.ItemArray.Clone() as object[];
-                            //temporaryDataTable.Rows.Add(nuevoDataRow);
-                        }
-                    }
-                    if (miDataTable.Rows.Count > 0 && checkBoxinsertar.Checked == true && auxselect != -1)
-                    {
-                        rearrangeTable(SelectedRowNumber, 1, 0);
-                    }
-                    dataGridViewInputs.DataSource = miDataTable;
-                    // crear una funcion  con esto /////////////////////////////////////////
-
-                    for (int y = 0; y < dataGridViewInputs.Columns.Count; y++)
-                    {
-                        DataGridViewColumn column = dataGridViewInputs.Columns[y];
-                        column.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-                        dataGridViewInputs.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
-                    }
-                    dataGridViewInputs.Columns["Importe"].Visible = false;
-                    dataGridViewInputs.ClearSelection();
-                    SelectedRowNumber = -1;
-                    if (checkBoxImprimir.Checked == true)
-                    {
-                        DataTable table = (DataTable)dataGridViewInputs.DataSource;
-                        printTag(table);
-                        //temporaryDataTable.Rows.Clear();
-
-                    }
-
-                    textBoxNumberrows.Clear();
-                    textBoxNumberrows.Text = dataGridViewInputs.Rows.Count.ToString();
-                    // Utiliza LINQ para calcular la suma de la columna "MiColumna" después de convertir los valores a decimales.
-                    subtotal = miDataTable.AsEnumerable()
-                                            .Sum(row => double.Parse(row.Field<string>("Costo").TrimStart('$')));
-                    TotalPzs = miDataTable.AsEnumerable()
-                                            .Sum(row => double.Parse(row.Field<string>("Piezas").TrimStart('$')));
-                    textBoxSubtotal.Clear();
-                    textBoxSubtotal.Text = "$" + subtotal.ToString("N2");
-                    textBoxDiscount2.Clear();
-                    textBoxDiscount2.Text = "$0";
-                    tax = (subtotal * 16) / 100;
-                    textBoxTax.Clear();
-                    textBoxTax.Text = "$" + tax.ToString("N2");
-                    textBoxTotal.Clear();
-                    textBoxTotal.Text = "$" + ((subtotal - discount) + tax).ToString("N2");
-                    CleanAll();
-                    buttonEneble(true);
-                    inicializeButton(true);
-                }
-                else
-                {
-                    MessageBox.Show("Faltan datos.");
-                }
-            }
-            else
-            {
-                MessageBox.Show("Factura ya existe");
+                MessageBox.Show("La factura ya existe.");
                 textBoxInvoice.Clear();
+                return;
             }
 
+            // 2. Validar la cantidad
+            if (!int.TryParse(textBoxBox.Text, out int quantity))
+            {
+                MessageBox.Show("Faltan datos o la cantidad no es válida.");
+                return;
+            }
 
+            // 3. Obtener datos del producto y clientes
+            var productInfo = new ProductInfo(comboBoxProduct.Text);
+            string prefixClient = selectsql.GetPrefixClients(_idclient);
+
+            // 4. Llenar la tabla y crear filas
+            CreateAndFillRows(quantity, productInfo, prefixClient);
+
+            // 5. Actualizar la interfaz de usuario
+            UpdateUI();
+
+            // 6. Imprimir etiquetas si es necesario
+            if (checkBoxImprimir.Checked)
+            {
+                printTag((DataTable)dataGridViewInputs.DataSource);
+            }
+
+            // 7. Calcular y mostrar totales
+            CalculateAndDisplayTotals();
+
+            // 8. Limpiar y habilitar controles
+            CleanAll();
+            buttonEneble(true);
+            inicializeButton(true);
         }
 
         private void printTag(DataTable auxdatatable)
@@ -607,25 +475,10 @@ namespace InventaryWMS
             comboBoxContainer.Text = "";
             textBoxPrice.Clear();
         }
+
         private void comboBoxProduct_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //textBox2.Text = comboBoxProduct.SelectedItem.ToString();
-            double price;
-            double cost;
-            double box;
-            textBoxSerial.Clear();
-            selectsql.SerialATextBox(textBoxSerial, _idclient, comboBoxProduct.Text);
-            textBoxNameProduct.Clear();
-            selectsql.ProductsATextBox(textBoxNameProduct, _idclient, comboBoxProduct.Text);
-            textBoxCost.Clear();
-            selectsql.CostATextBox(textBoxCost, _idclient, comboBoxProduct.Text);
-            textBoxParts.Clear();
-            selectsql.ItemsPerBoxATextBox(textBoxParts, _idclient, comboBoxProduct.Text);
-            textBoxPrice.Clear();
-            Double.TryParse(textBoxCost.Text, out cost);
-            Double.TryParse(textBoxBox.Text, out box);
-            price = cost * box;
-            textBoxPrice.Text = price.ToString();
+
         }
 
         private void rearrangeTable(int selectrow, int opcion, int numrows)
@@ -723,9 +576,11 @@ namespace InventaryWMS
                         textBoxNumberrows.Text = dataGridViewInputs.Rows.Count.ToString();
                         // Utiliza LINQ para calcular la suma de la columna "MiColumna" después de convertir los valores a decimales.
                         subtotal = miDataTable.AsEnumerable()
-                                                .Sum(row => double.Parse(row.Field<string>("Costo").TrimStart('$')));
+                                                .Sum(row => double.Parse(row.Field<string>("Costo")
+                                                .TrimStart('$')));
                         TotalPzs = miDataTable.AsEnumerable()
-                                                    .Sum(row => double.Parse(row.Field<string>("Piezas").TrimStart('$')));
+                                                    .Sum(row => double.Parse(row.Field<string>("Piezas")
+                                                    .TrimStart('$')));
                         textBoxSubtotal.Clear();
                         textBoxSubtotal.Text = "$" + subtotal.ToString("N2");
                         tax = (subtotal * 16) / 100;
@@ -765,7 +620,7 @@ namespace InventaryWMS
         {
             buttonPrintLabel.Enabled = yes;
             buttonReport.Enabled = yes;
-            
+
         }
         private void dataGridViewInputs_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -935,107 +790,47 @@ namespace InventaryWMS
 
         private void buttonSettle_Click(object sender, EventArgs e)
         {
-            InvoiceHeader invoiceHeader = new InvoiceHeader();
-            InvoiceItem invoiceItem = new InvoiceItem();
-            DialogResult result = MessageBox.Show("¿Esta seguro de Asentar?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            // Mostrar confirmación al usuario
+            if (MessageBox.Show("¿Está seguro de Asentar?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question) != DialogResult.Yes)
+            {
+                return; // Salir si el usuario no confirma
+            }
+
             spinner.Enabled = true;
-            // Verificar la respuesta del usuario
-            if (result == DialogResult.Yes)
+
+            try
             {
+                // 1. Obtener datos iniciales y validaciones
+                var invoiceData = new InvoiceData(
+                    selectsql.GetIdOnShortNameWarehoses(comboBoxLocation.Text),
+                    selectsql.GetIdSession(_iduser.ToString()),
+                    currentdate,
+                    textBoxInvoice.Text,
+                    textBoxSubtotal.Text,
+                    textBoxDiscount2.Text,
+                    textBoxTax.Text,
+                    textBoxTotal.Text, 
+                    textBox1.Text
+                );
 
-                this.Cursor = Cursors.WaitCursor;
-                string comando;
-                int idwarehouse;
-                int idsession;
-                int idinvoiceheader;
-                int idinvoicepallet;
-                int idinvoiceitems;
-                int idproduct;
-                string partnumberclient;
-                int idclientprovider;
-                int idinternalwarehouse; ;
-                string dateformat;
-                bool header;
-                bool pallet;
-                bool items;
-                bool inventary;
-                bool AllInventary = true;
-                DataTable valuesProduct = new DataTable();
-                idwarehouse = selectsql.GetIdOnShortNameWarehoses(comboBoxLocation.Text);
-                idsession = selectsql.GetIdSession(_iduser.ToString());
+                // 2. Insertar en la base de datos dentro de una transacción
+                bool success = InsertAllInvoiceData(invoiceData);
 
-                currentdate = DateTime.Now;
-                dateformat = currentdate.ToString("yyyyMMdd HH:mm:ss");
-                comando = "INSERT INTO [dbo].[INVOICE_HEADERS] ([IDCLIENTE],[INVOICE_INDEX],[CREATE_AT],[INVOICE],[CUSTOMS_DOCUMENTS],[PROFORMA],[CLIENT_REFERENCE],[IDWAREHOUSES],[STATUS],[COMMENTS],[SESSION_IDSESSION],[VALID],[SUBTOTAL],[DISCOUNT],[TAX],[TOTAL],[RECEIVES]) VALUES (" + _idclient + "," + 1 + ",'" + dateformat + "','" + textBoxInvoice.Text + "','" + "Documentos" + "','" + "Remision" + "','" + "Referencia" + "'," + idwarehouse + "," + 1 + ",'" + "Comentarios" + "'," + idsession + "," + 1 + "," + textBoxSubtotal.Text.Replace("$", "") + "," + textBoxDiscount2.Text.Replace("$", "") + "," + textBoxTax.Text.Replace("$", "") + "," + textBoxTotal.Text.Replace("$", "") + ",'" + textBox1.Text + "')"; 
-                header = insertsql.insertSentency(comando);
-                if (header == true)
+                // 3. Manejar el resultado de la operación
+                if (success)
                 {
-                    idinvoiceheader = selectsql.GetLastIdInvoiceHeader();
-                    comando = "INSERT INTO [dbo].[INVOICE_PALLETS] ([IDINVOICE_HEADERS],[SERIAL],[VALID]) VALUES (" + idinvoiceheader + ",'" + textBoxInvoice.Text + "'," + 1 + ")";
-                    pallet = insertsql.insertSentency(comando);
-                    if (pallet == true)
-                    {
-                        idinvoicepallet = selectsql.GetLastIdInvoicePallet();
-                        for (int i = 0; i < miDataTable.Rows.Count; i++)
-                        {
-                            idproduct = selectsql.GetIdProducts(miDataTable.Rows[i]["Código"].ToString());
-                            valuesProduct = selectsql.GetValuesFromProduct(idproduct);
-                            partnumberclient = selectsql.GetPartClient(idproduct);
-                            idclientprovider = selectsql.GetIdClientProvider(miDataTable.Rows[i]["Provedor"].ToString(), _idclient);
-                            idinternalwarehouse = selectsql.GetIdInternalWarehouses(miDataTable.Rows[i]["Bodega"].ToString());
-                            //currentdate = DateTime.Now;
-                            //dateformat = currentdate.ToString("yyyyMMdd HH:mm:ss");
-                            comando = "INSERT INTO [dbo].[INVOICE_ITEMS] ([IDINVOICE_HEADERS],[IDINVOICE_PALLETS],[IDPRODUCTS],[QUANTITY],[INVOICE],[BATCH],[EXTERNAL_SERIAL],[EXPIRATION_DATE],[REVISION],[CUSTOMS_DOCUMENT],[PROFORMA],[SERIAL],[PACKING_LIST],[BOXES],[IDCLIENT_PROVIDERS],[DESCRIPTION],[IDMEASURING_UNIT],[WEIGHT],[UNIT_VALUE],[IDCURRENCY],[TARIFF_FRACTION],[IDCOUNTRIES],[STATUS],[CREATE_AT],[SESSION_IDSESSION],[VALID],[PEDIMENTOADUANAL],[ID_INTERNAL_WAREHOUSE],[REGIMEN],[REMISION],[PEDIMENTO_DATE],[PAY_DATE],[CONTAINER],[COST],[PRICE],[TRANSPORT]) VALUES (" + idinvoiceheader + "," + idinvoicepallet + "," + idproduct + "," + miDataTable.Rows[i]["Piezas"].ToString() + ",'" + miDataTable.Rows[i]["Factura"].ToString() + "','" + miDataTable.Rows[i]["Lote"].ToString() + "','" + partnumberclient + "','" + DateTime.Parse(miDataTable.Rows[i]["Caduca"].ToString()).ToString("yyyyMMdd") + "','" + "Revision" + "','" + "Documentos" + "','" + "Proforma" + "','" + miDataTable.Rows[i]["Serie"].ToString() + "','" + "Lista de embalaje" + "'," + 1 + "," + idclientprovider + ",'" + " " + "'," + valuesProduct.Rows[0][0].ToString() + "," + valuesProduct.Rows[0][1].ToString() + "," + valuesProduct.Rows[0][2].ToString() + "," + valuesProduct.Rows[0][3].ToString() + ",'" + valuesProduct.Rows[0][4].ToString() + "'," + valuesProduct.Rows[0][5].ToString() + "," + 1 + ",'" + dateformat + "'," + idsession + "," + 1 + ",'" + miDataTable.Rows[i]["Pedimento"].ToString() + "'," + idinternalwarehouse + ",'" + miDataTable.Rows[i]["Regimen"].ToString() + "','" + miDataTable.Rows[i]["Remision"].ToString() + "','" + DateTime.Parse(miDataTable.Rows[i]["FechaPedimento"].ToString()).ToString("yyyyMMdd") + "','" + DateTime.Parse(miDataTable.Rows[i]["FechaPagar"].ToString()).ToString("yyyyMMdd") + "','" + miDataTable.Rows[i]["Contenedor"].ToString() + "'," + miDataTable.Rows[i]["Costo"].ToString().Replace("$", "") + "," + miDataTable.Rows[i]["Precio"].ToString().Replace("$", "") + ",'" + miDataTable.Rows[i]["Transporte"].ToString() + "')";
-                            items = insertsql.insertSentency(comando);
-                            if (items == true)
-                            {
-                                idinvoiceitems = selectsql.GetLastIdInvoiceItem();
-                                comando = "INSERT INTO [dbo].[INVENTORY] ([ID_INVOICE_ITEM],[QUANTITY],[STATUS],[VALID]) VALUES(" + idinvoiceitems + "," + miDataTable.Rows[i]["Piezas"].ToString() + "," + 1 + "," + 1 + ")";
-                                inventary = insertsql.insertSentency(comando);
-                                if (!inventary)
-                                {
-                                    MessageBox.Show("fallo en inventory" + comando);
-                                    AllInventary = false;
-                                }
-                                
-                            }
-                            else
-                            {
-                                MessageBox.Show("fallo en items" + comando);
-                            }
-
-                        }
-
-                        if (AllInventary)
-                        {
-                            //Todos los elementos entraron correctamente.
-                            this.Cursor = Cursors.Default;
-                            MessageBox.Show("se ingreso correctamente");
-                            insertsql.SaveToBinnacle("Ingreso con factura: " + textBoxInvoice.Text + " creada con exito");
-                            buttonEneble(false);
-                            lastserial = selectsql.GetLastSerial();
-                            int.TryParse(lastserial, out valueserial);
-                            // Crear una instancia del formulario emergente
-                            FormPopupWindowLoad();   
-                        }
-                    }
-                    else
-                    {
-                        MessageBox.Show("fallo en pallet" + comando);
-                    }
-
+                    HandleSuccess(invoiceData.InvoiceNumber);
                 }
-                else
-                {
-                    MessageBox.Show("fallo en header" + comando);
-                }
-
             }
-            else
+            catch (Exception ex)
             {
-
+                // Manejo de errores centralizado
+                MessageBox.Show($"Ocurrió un error inesperado: {ex.Message}");
             }
-            spinner.Enabled = false;
+            finally
+            {
+                spinner.Enabled = false;
+            }
         }
 
         private bool serachindatatable(DataTable aux, string column, string value)
@@ -1087,7 +882,7 @@ namespace InventaryWMS
         }
         private void comboBoxContainer_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
+
         }
 
         private void Control_Click(object sender, EventArgs e)
@@ -1104,7 +899,7 @@ namespace InventaryWMS
                 //comboBox.ForeColor = Color.Blue;
                 comboBox.SelectAll();
             }
-            
+
         }
 
         private void comboBoxProduct_MouseClick(object sender, MouseEventArgs e)
@@ -1641,7 +1436,7 @@ namespace InventaryWMS
         private void buttonLoad_Click(object sender, EventArgs e)
         {
             //DialogResult result = MessageBox.Show("Se va a cargar la factura: " + textBoxInvoice.Text + ", durante este proceso no podra agregar ni eliminar productos.¿Desea continuar?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            
+
             try
             {
                 Task.Run(() =>
@@ -1691,8 +1486,8 @@ namespace InventaryWMS
                                 MessageBox.Show("La factura no pertenece al cliente o no existe");
                             }
                         }
-                }));
-                });                
+                    }));
+                });
             }
             catch (Exception ex)
             {
@@ -1700,7 +1495,7 @@ namespace InventaryWMS
             }
         }
 
-      
+
 
         private void textBoxSerial_TextChanged(object sender, EventArgs e)
         {
@@ -1725,7 +1520,7 @@ namespace InventaryWMS
         private void comboBoxProduct_SelectedIndexChanged_1(object sender, EventArgs e)
         {
             try
-            { 
+            {
                 double price;
                 double cost;
                 double itemsbox;
@@ -1891,6 +1686,236 @@ namespace InventaryWMS
                     }
                 }
             }
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        // Reemplaza el uso de 'Transaction' por 'SqlTransaction' de System.Data.SqlClient.
+        // Modifica el método InsertAllInvoiceData para usar una transacción de SQL Server.
+
+        private bool InsertAllInvoiceData(InvoiceData data)
+        {
+            using (SqlConnection conn = DBConections.GetConnection())
+            {
+                conn.Open();
+                SqlTransaction transaction = conn.BeginTransaction();
+
+                try
+                {
+                    // Insertar el encabezado de la factura
+                    int invoiceHeaderId = insertsql.InsertInvoiceHeader(transaction, data.InvoiceHeaderParameters);
+
+                    // Insertar el pallet de la factura
+                    int invoicePalletId = insertsql.InsertInvoicePallet(transaction, invoiceHeaderId, data.InvoiceNumber);
+
+                    // Insertar los ítems y el inventario
+                    InsertInvoiceItemsAndInventory(transaction, invoiceHeaderId, invoicePalletId);
+
+                    // Confirmar transacción si todo fue bien
+                    transaction.Commit();
+                    return true;
+                }
+                catch (SqlException sqlEx)
+                {
+                    transaction.Rollback();
+                    MessageBox.Show($"Error en la base de datos: {sqlEx.Message}");
+                    return false;
+                }
+            }
+        }
+
+        private void InsertInvoiceItemsAndInventory(SqlTransaction transaction, int invoiceHeaderId, int invoicePalletId)
+        {
+            foreach (DataRow row in miDataTable.Rows)
+            {
+                var itemData = new InvoiceItemData(row, _idclient);
+                var idSection = selectsql.GetIdSession(_iduser.ToString());
+                // Insertar el ítem de la factura
+                int invoiceItemId = insertsql.InsertInvoiceItem(transaction, invoiceHeaderId, invoicePalletId, itemData, idSection);
+
+                // Insertar en el inventario
+                insertsql.InsertInventory(transaction, invoiceItemId, itemData.Pieces);
+            }
+        }
+
+        private void HandleSuccess(string invoiceNumber)
+        {
+            this.Cursor = Cursors.Default;
+            MessageBox.Show("Se ingresó correctamente.");
+            insertsql.SaveToBinnacle($"Ingreso con factura: {invoiceNumber} creado con éxito");
+            buttonEneble(false);
+            lastserial = selectsql.GetLastSerial();
+            int.TryParse(lastserial, out valueserial);
+            FormPopupWindowLoad();
+        }
+
+        //--- Clases de Datos para mayor claridad ---
+        
+        
+
+        private void CreateAndFillRows(int quantity, ProductInfo productInfo, string prefixClient)
+        {
+            for (int i = 0; i < quantity; i++)
+            {
+                var newRow = miDataTable.NewRow();
+                PopulateRowData(newRow, productInfo, prefixClient);
+                AddRowToDataTable(newRow);
+            }
+        }
+
+        private void PopulateRowData(DataRow row, ProductInfo productInfo, string prefixClient)
+        {
+            row["Código"] = productInfo.Code;
+            row["Nombre"] = textBoxNameProduct.Text;
+            row["Costo"] = textBoxCost.Text;
+            row["Precio"] = textBoxPrice.Text;
+            row["Cantidad"] = 1;
+            row["NumeroSerie"] = textBoxSerial.Text;
+            row["Caduca"] = dateTimePickerExpires.Value.ToString("yyyy-MM-dd HH:mm:ss");
+            row["Serie"] = GenerateSerialNumber(prefixClient);
+            row["Pedimento"] = textBoxPedimento.Text;
+            row["Ubicación"] = comboBoxLocation.Text;
+            row["Lote"] = GetBatchNumber();
+            row["Piezas"] = textBoxParts.Text;
+            row["Unidad"] = GetMeasuringUnitAbbreviation(productInfo.Code);
+            row["Bodega"] = comboBoxStore.Text;
+            row["Factura"] = textBoxInvoice.Text;
+            row["Provedor"] = comboBoxProviders.Text;
+            row["Regimen"] = comboBoxRegimen.Text;
+            row["FechaPedimento"] = dateTimePickerPedimento.Value.ToString("yyyy-MM-dd HH:mm:ss");
+            row["Contenedor"] = comboBoxContainer.Text;
+            row["FechaRecepcion"] = dateTimePickerReception.Value.ToString("yyyy-MM-dd HH:mm:ss");
+            row["FechaPagar"] = dateTimePickerPay.Value.ToString("yyyy-MM-dd HH:mm:ss");
+            row["Remision"] = textBoxRemission.Text;
+            row["Transporte"] = comboBoxTransport.Text;
+        }
+
+        private void AddRowToDataTable(DataRow newRow)
+        {
+            if (miDataTable.Rows.Count > 0 && checkBoxinsertar.Checked && SelectedRowNumber != -1)
+            {
+                miDataTable.Rows.InsertAt(newRow, SelectedRowNumber + 1);
+            }
+            else
+            {
+                miDataTable.Rows.Add(newRow);
+            }
+        }
+
+        private string GenerateSerialNumber(string prefixClient)
+        {
+            serial = $"{prefixClient}{currentdate.ToString("yyMMdd")}ABCD-";
+            valueserial += 1;
+            serial += valueserial.ToString("D4");
+            return serial;
+        }
+
+        private string GetBatchNumber()
+        {
+            return string.IsNullOrEmpty(textBoxBatch.Text) ? "S/L" : textBoxBatch.Text;
+        }
+
+        private string GetMeasuringUnitAbbreviation(string productCode)
+        {
+            string idMeasuring = selectsql.GetidMeasuring_unit(_idclient.ToString(), productCode);
+            return selectsql.GetAbreviationMeasuring_unit(idMeasuring);
+        }
+
+        private void UpdateUI()
+        {
+            // Lógica para reorganizar y actualizar el DataGridView
+            if (miDataTable.Rows.Count > 0 && checkBoxinsertar.Checked && SelectedRowNumber != -1)
+            {
+                rearrangeTable(SelectedRowNumber, 1, 0);
+            }
+
+            dataGridViewInputs.DataSource = miDataTable;
+            SetDataGridViewColumns();
+            dataGridViewInputs.ClearSelection();
+            SelectedRowNumber = -1;
+        }
+
+        private void SetDataGridViewColumns()
+        {
+            foreach (DataGridViewColumn column in dataGridViewInputs.Columns)
+            {
+                column.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            }
+            dataGridViewInputs.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
+            dataGridViewInputs.Columns["Importe"].Visible = false;
+        }
+
+        private void CalculateAndDisplayTotals()
+        {
+            double subtotal = miDataTable.AsEnumerable()
+                                       .Sum(row => double
+                                       .Parse(row.Field<string>("Costo")
+                                       .TrimStart('$')));
+
+            double totalPieces = miDataTable.AsEnumerable()
+                                       .Sum(row => double
+                                       .Parse(row.Field<string>("Piezas")
+                                       .TrimStart('$')));
+
+            double tax = (subtotal * 16) / 100;
+            double total = (subtotal - discount) + tax;
+
+            textBoxNumberrows.Text = dataGridViewInputs.Rows.Count.ToString();
+            textBoxSubtotal.Text = $"${subtotal:N2}";
+            textBoxDiscount2.Text = "$0";
+            textBoxTax.Text = $"${tax:N2}";
+            textBoxTotal.Text = $"${total:N2}";
+        }
+
+        // Clase auxiliar para la información del producto
+        public class ProductInfo
+        {
+            public string Code { get; private set; }
+            public string Description { get; private set; }
+
+            public ProductInfo(string combinedText)
+            {
+                var parts = combinedText.Split('|');
+                if (parts.Length > 1)
+                {
+                    Description = parts[0].Trim();
+                    Code = parts[1].Trim();
+                }
+            }
+        }
+        //#endregion
+
+        #region Métodos auxiliares para encapsular la lógica de inicialización
+        private void SetDefaultControlValues()
+        {
+            dateTimePickerReception.Text = currentdate.ToString();
+            dateTimePickerPay.Text = currentdate.ToString();
+            dateTimePickerExpires.Value = DateTime.Now.AddYears(+1);
+            comboBoxStore.SelectedIndex = 0;
+        }
+
+        private void ConfigureDataGridView()
+        {
+            dataGridViewInputs.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+        }
+
+        private void ConfigurePrintDocument()
+        {
+            printDocument1.PrintPage += new PrintPageEventHandler(printDocument1_PrintPage);
+        }
+        #endregion
+
+        private void comboBoxProduct_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel7_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

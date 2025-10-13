@@ -44,7 +44,7 @@ namespace InventaryWMS
             {
                 MessageBox.Show("Error al conectar a base de datos, intenta configurar la bas ede datos: " + ex.Message);
                 _connection.Close();
-                return false; 
+                return false;
             }
             return true;
         }
@@ -93,7 +93,7 @@ namespace InventaryWMS
             }
             catch (Exception ex)
             {
-                
+
                 message = "Mensaje:" + ex.Message;
 
             }
@@ -736,7 +736,7 @@ namespace InventaryWMS
                 SqlCommand cmd = new SqlCommand(query, _connection);
                 cmd.Parameters.AddWithValue("@value1", idWarehouse);
                 cmd.Parameters.AddWithValue("@value2", rackType);
-                if(rackType == 2)//solo para bahias asignadas a un cliente
+                if (rackType == 2)//solo para bahias asignadas a un cliente
                 {
                     cmd.Parameters.AddWithValue("@value3", idClient);
                 }
@@ -851,7 +851,7 @@ namespace InventaryWMS
 
                 while (reader.Read())
                 {
-                    
+
                     item.IDINVOICE_ITEMS = (int)reader["IDINVOICE_ITEMS"];
                     item.IDINVOICE_HEADERS = (int)reader["IDINVOICE_HEADERS"];
                     item.IDINVOICE_PALLETS = (int)reader["IDINVOICE_PALLETS"];
@@ -888,7 +888,7 @@ namespace InventaryWMS
                     item.PEDIMENTO_DATE = reader["PEDIMENTO_DATE"].ToString();
                     item.PAY_DATE = reader["PAY_DATE"].ToString();
                     item.CONTAINER = reader["CONTAINER"].ToString();
-                    
+
 
                 }
             }
@@ -896,7 +896,7 @@ namespace InventaryWMS
             {
                 MessageBox.Show("Error : " + ex.Message);
                 message = "Mensaje:" + ex.Message;
-                
+
             }
             _connection.Close();
             return item;
@@ -1330,7 +1330,7 @@ namespace InventaryWMS
 
         }
 
-        public DataTable getdatatableInventary(int option, string data, int idclient,bool type)
+        public DataTable getdatatableInventary(int option, string data, int idclient, bool type)
         {
             try
             {
@@ -1370,7 +1370,7 @@ namespace InventaryWMS
                 }
 
                 //string baseQuery = "SELECT P.PART_NUMBER_PROVIDER AS Código, P.DESCRIPTION AS Nombre, I.SERIAL AS Serie, I.INVOICE AS Factura, I.BATCH AS Lote, N.QUANTITY AS Piezas, M.ABREVIATION AS Unidad, R.NAME AS Lugar, B.NAME AS Bodega, W.NAME AS Ubicación, I.CREATE_AT AS FechaRecepcion, @clients " +
-                
+
 
                 string condition = string.Empty;
 
@@ -1621,7 +1621,7 @@ namespace InventaryWMS
             try
             {
                 _connection.Open();
-                SqlCommand cmd = new SqlCommand("SELECT [IDCLIENTE_PROVIDERS] FROM [dbo].[CLIENTS_PROVIDERS] WHERE [NAME] = @NAME AND [IDCLIENTE] = @IDCLIENTS" , _connection);
+                SqlCommand cmd = new SqlCommand("SELECT [IDCLIENTE_PROVIDERS] FROM [dbo].[CLIENTS_PROVIDERS] WHERE [NAME] = @NAME AND [IDCLIENTE] = @IDCLIENTS", _connection);
                 cmd.Parameters.AddWithValue("@NAME", NAME);
                 cmd.Parameters.AddWithValue("@IDCLIENTS", IDCLIENTS);
                 _dr = cmd.ExecuteReader();
@@ -2097,7 +2097,7 @@ namespace InventaryWMS
                     dateClientProviders.IDCLIENTE = int.Parse(dr["IDCLIENTE"].ToString());
                     dateClientProviders.NAME = dr["NAME"].ToString();
                     dateClientProviders.DESCRIPTION = dr["DESCRIPTION"].ToString();
-                    
+
                     dateClientProviders.VALID = bool.Parse(dr["VALID"].ToString());
 
                 }
@@ -2502,7 +2502,7 @@ namespace InventaryWMS
             _connection.Close();
         }
 
-        
+
         public void ItemsPerBoxATextBox(TextBox TEXTBOX, int IDCLINTE, string PART_NUMBER_PROVIDER)
         {
             try
@@ -2562,7 +2562,7 @@ namespace InventaryWMS
 
                 while (_dr.Read())
                 {
-                    COMBOBOX.Items.Add(_dr["DESCRIPTION"].ToString() + " | " + _dr["PART_NUMBER_PROVIDER"].ToString() );
+                    COMBOBOX.Items.Add(_dr["DESCRIPTION"].ToString() + " | " + _dr["PART_NUMBER_PROVIDER"].ToString());
                     lis.Add(_dr["PART_NUMBER_PROVIDER"].ToString());
                 }
 
@@ -2784,8 +2784,8 @@ namespace InventaryWMS
                 _dr = cmd.ExecuteReader();
 
                 while (_dr.Read())
-                { 
-                   COMBOBOX.Items.Add(_dr["INV"].ToString());
+                {
+                    COMBOBOX.Items.Add(_dr["INV"].ToString());
                 }
 
 
@@ -3009,6 +3009,7 @@ namespace InventaryWMS
             }
             _connection.Close();
         }
+
         public void SerialNoBatchAComboBox(ComboBox COMBOBOX, int IDPRODUCTS, int ID_INTERNAL_WAREHOUSE)
         {
             try
@@ -3087,7 +3088,7 @@ namespace InventaryWMS
 
                 _connection.Close();
             }
-            
+
         }
 
         #endregion
@@ -3664,7 +3665,7 @@ namespace InventaryWMS
             try
             {
                 _connection.Open();
-                SqlCommand cmd = new SqlCommand("SELECT CLIENTS.NAME,REMISSION_ITEMS.REMISSION_ID, INVOICE_ITEMS.IDINVOICE_ITEMS, INVOICE_ITEMS.SERIAL AS SERIAL, PRODUCTS.PART_NUMBER_PROVIDER AS PROVPARTNUM, PRODUCTS.PART_NUMBER_CLIENT AS CUSTPARTNUM, PRODUCTS.DESCRIPTION AS DESCRIPTION,INVOICE_ITEMS.BOXES AS PC, INVENTORY.QUANTITY AS QTY, MEASURING_UNIT.ABREVIATION AS UM,  INVENTORY.IDWAREHOUSE_RACK_POSITIONS AS LOCAL,CLIENTS_PROVIDERS.NAME AS PROVEEDOR, INVOICE_ITEMS.BATCH AS LOTE, INVOICE_ITEMS.CREATE_AT AS FECHA,INVOICE_ITEMS.PEDIMENTOADUANAL AS PEDIMENTO,INVOICE_ITEMS.REGIMEN,INVOICE_ITEMS.COST AS PRECIO,CURRENCIES.ABREVIATION AS CURRENCY,INVOICE_ITEMS.COST AS IMPORTE FROM  REMISSION_ITEMS INNER JOIN INVOICE_ITEMS ON REMISSION_ITEMS.ID_REMISSION_ITEM = INVOICE_ITEMS.IDINVOICE_ITEMS INNER JOIN PRODUCTS ON PRODUCTS.IDPRODUCTS = REMISSION_ITEMS.INVENTORY_ITEM_ID INNER JOIN INVENTORY ON INVENTORY.ID_INVOICE_ITEM = REMISSION_ITEMS.INVENTORY_ITEM_ID INNER JOIN CURRENCIES ON CURRENCIES.IDCURRENCIES = PRODUCTS.CURRENCY INNER JOIN MEASURING_UNIT ON PRODUCTS.MEASSURMENT_UNIT = MEASURING_UNIT.IDMEASURING_UNIT INNER JOIN INVOICE_HEADERS ON INVOICE_HEADERS.IDINVOICE_HEADERS = INVOICE_ITEMS.IDINVOICE_HEADERS INNER JOIN CLIENTS_PROVIDERS ON CLIENTS_PROVIDERS.IDCLIENTE_PROVIDERS = INVOICE_ITEMS.IDCLIENT_PROVIDERS INNER JOIN CLIENTS ON CLIENTS.IDCLIENTS = PRODUCTS.IDCLIENTE  WHERE PRODUCTS.IDCLIENTE = @IDCLINTE AND REMISSION_ID = @REMISION ", _connection);
+                SqlCommand cmd = new SqlCommand("SELECT CLIENTS.NAME, REMISSION_HEADER.VALID, REMISSION_ITEMS.REMISSION_ID, INVOICE_ITEMS.IDINVOICE_ITEMS, INVOICE_ITEMS.SERIAL AS SERIAL, PRODUCTS.PART_NUMBER_PROVIDER AS PROVPARTNUM, INVOICE_ITEMS.EXTERNAL_SERIAL AS CUSTPARTNUM, PRODUCTS.DESCRIPTION AS DESCRIPTION,INVOICE_ITEMS.BOXES AS PC, INVENTORY.QUANTITY AS QTY, MEASURING_UNIT.ABREVIATION AS UM,  INVENTORY.IDWAREHOUSE_RACK_POSITIONS AS LOCAL,CLIENTS_PROVIDERS.NAME AS PROVEEDOR, INVOICE_ITEMS.BATCH AS LOTE, INVOICE_ITEMS.CREATE_AT AS FECHA,INVOICE_ITEMS.PEDIMENTOADUANAL AS PEDIMENTO, INVOICE_ITEMS.REGIMEN,INVOICE_ITEMS.COST AS PRECIO,CURRENCIES.ABREVIATION AS CURRENCY,INVOICE_ITEMS.COST AS IMPORTE, REMISSION_HEADER.REMISSION_AT FROM REMISSION_ITEMS INNER JOIN REMISSION_HEADER ON REMISSION_HEADER.ID_REMISSION_HEADER = REMISSION_ITEMS.REMISSION_ID INNER JOIN INVENTORY ON INVENTORY.IDINVENTORY = REMISSION_ITEMS.INVENTORY_ITEM_ID INNER JOIN INVOICE_ITEMS ON INVENTORY.ID_INVOICE_ITEM  = INVOICE_ITEMS.IDINVOICE_ITEMS INNER JOIN PRODUCTS ON PRODUCTS.IDPRODUCTS = INVOICE_ITEMS.IDPRODUCTS INNER JOIN CURRENCIES ON CURRENCIES.IDCURRENCIES = PRODUCTS.CURRENCY INNER JOIN MEASURING_UNIT ON MEASURING_UNIT.IDMEASURING_UNIT = PRODUCTS.MEASSURMENT_UNIT INNER JOIN CLIENTS_PROVIDERS ON CLIENTS_PROVIDERS.IDCLIENTE_PROVIDERS = INVOICE_ITEMS.IDCLIENT_PROVIDERS INNER JOIN CLIENTS ON CLIENTS.IDCLIENTS = PRODUCTS.IDCLIENTE WHERE PRODUCTS.IDCLIENTE = @IDCLINTE AND REMISSION_ID = @REMISION ", _connection);
                 cmd.Parameters.AddWithValue("@REMISION", REMISION);
                 cmd.Parameters.AddWithValue("@IDCLINTE", IDCLINTE);
                 SqlDataAdapter ad = new SqlDataAdapter(cmd);
@@ -3680,6 +3681,47 @@ namespace InventaryWMS
                 return null;
             }
         }
+
+        public DataTable GetAllSeries(int IDCLIENT, int ID_INTERNAL_WAREHOUSE)
+        {
+            DataTable Values = new DataTable();
+            try
+            {
+                _connection.Open();
+                SqlCommand cmd = new SqlCommand("SELECT IDPRODUCTS, BATCH, SERIAL FROM dbo.INVOICE_ITEMS INNER JOIN INVOICE_HEADERS ON INVOICE_ITEMS.IDINVOICE_HEADERS = INVOICE_HEADERS.IDINVOICE_HEADERS WHERE INVOICE_HEADERS.IDCLIENTE = @IDCLIENT AND INVOICE_ITEMS.ID_INTERNAL_WAREHOUSE = @ID_INTERNAL_WAREHOUSE AND INVOICE_ITEMS.VALID = 'true'", _connection);
+                cmd.Parameters.AddWithValue("@IDCLIENT", IDCLIENT);
+                cmd.Parameters.AddWithValue("@ID_INTERNAL_WAREHOUSE", ID_INTERNAL_WAREHOUSE);
+                SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                adapter.Fill(Values);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error : " + ex.Message);
+            }
+            _connection.Close();
+            return Values;
+        }
+
+        public DataTable GetAllLotes(int IDCLIENT, int ID_INTERNAL_WAREHOUSE)
+        {
+            DataTable Values = new DataTable();
+            try
+            {
+                _connection.Open();
+                SqlCommand cmd = new SqlCommand("SELECT IDPRODUCTS, BATCH, SERIAL FROM dbo.INVOICE_ITEMS INNER JOIN INVOICE_HEADERS ON INVOICE_ITEMS.IDINVOICE_HEADERS = INVOICE_HEADERS.IDINVOICE_HEADERS WHERE INVOICE_HEADERS.IDCLIENTE = @IDCLINTE AND INVOICE_ITEMS.VALID = 'true' AND INVOICE_ITEMS.ID_INTERNAL_WAREHOUSE = @ID_INTERNAL_WAREHOUSE", _connection);
+                cmd.Parameters.AddWithValue("@IDCLINTE", IDCLIENT);
+                cmd.Parameters.AddWithValue("@ID_INTERNAL_WAREHOUSE", ID_INTERNAL_WAREHOUSE);
+                SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                adapter.Fill(Values);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error : " + ex.Message);
+            }
+            _connection.Close();
+            return Values;
+        }
+
         #endregion
 
         #region Other
@@ -3766,6 +3808,5 @@ namespace InventaryWMS
         }
 
         #endregion
-
     }
 }

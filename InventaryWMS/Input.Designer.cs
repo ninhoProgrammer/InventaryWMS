@@ -46,7 +46,6 @@ namespace InventaryWMS
             this.textBoxSubtotal = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBoxNumberrows = new System.Windows.Forms.TextBox();
             this.comboBoxLocation = new System.Windows.Forms.ComboBox();
             this.textBoxSerial = new System.Windows.Forms.TextBox();
             this.textBoxParts = new System.Windows.Forms.TextBox();
@@ -73,19 +72,7 @@ namespace InventaryWMS
             this.label7 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
-            this.comboBoxTransport = new System.Windows.Forms.ComboBox();
-            this.textBoxPay = new System.Windows.Forms.TextBox();
-            this.textBoxReception = new System.Windows.Forms.TextBox();
-            this.textBoxPediment = new System.Windows.Forms.TextBox();
-            this.label15 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.dateTimePickerPedimento = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePickerPay = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePickerReception = new System.Windows.Forms.DateTimePicker();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
             this.panel7 = new System.Windows.Forms.Panel();
-            this.spinner = new InventaryWMS.LoadingSpinner();
             this.panel8 = new System.Windows.Forms.Panel();
             this.comboBoxProduct = new System.Windows.Forms.ComboBox();
             this.label28 = new System.Windows.Forms.Label();
@@ -118,6 +105,19 @@ namespace InventaryWMS
             this.buttonClear = new System.Windows.Forms.Button();
             this.dataGridViewInputs = new System.Windows.Forms.DataGridView();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.textBoxNumberrows = new System.Windows.Forms.TextBox();
+            this.spinner = new InventaryWMS.LoadingSpinner();
+            this.comboBoxTransport = new System.Windows.Forms.ComboBox();
+            this.textBoxPay = new System.Windows.Forms.TextBox();
+            this.textBoxReception = new System.Windows.Forms.TextBox();
+            this.textBoxPediment = new System.Windows.Forms.TextBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.dateTimePickerPedimento = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePickerPay = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePickerReception = new System.Windows.Forms.DateTimePicker();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -139,7 +139,7 @@ namespace InventaryWMS
             this.panel3.Controls.Add(this.checkBoxeditar);
             this.panel3.Controls.Add(this.checkBoxinsertar);
             this.panel3.Controls.Add(this.checkBoxImprimir);
-            this.panel3.Location = new System.Drawing.Point(1026, 460);
+            this.panel3.Location = new System.Drawing.Point(940, 440);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(201, 66);
             this.panel3.TabIndex = 0;
@@ -179,7 +179,7 @@ namespace InventaryWMS
             // panel1
             // 
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel1.Location = new System.Drawing.Point(1026, 387);
+            this.panel1.Location = new System.Drawing.Point(940, 367);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(200, 108);
             this.panel1.TabIndex = 0;
@@ -190,7 +190,7 @@ namespace InventaryWMS
             this.textBoxTotal.BackColor = System.Drawing.Color.LightGreen;
             this.textBoxTotal.Enabled = false;
             this.textBoxTotal.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxTotal.Location = new System.Drawing.Point(81, 131);
+            this.textBoxTotal.Location = new System.Drawing.Point(81, 143);
             this.textBoxTotal.Name = "textBoxTotal";
             this.textBoxTotal.Size = new System.Drawing.Size(131, 23);
             this.textBoxTotal.TabIndex = 0;
@@ -201,7 +201,7 @@ namespace InventaryWMS
             this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.AutoSize = true;
             this.label4.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label4.Location = new System.Drawing.Point(20, 135);
+            this.label4.Location = new System.Drawing.Point(20, 147);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(34, 13);
             this.label4.TabIndex = 0;
@@ -213,7 +213,7 @@ namespace InventaryWMS
             this.textBoxTax.BackColor = System.Drawing.Color.Khaki;
             this.textBoxTax.Enabled = false;
             this.textBoxTax.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxTax.Location = new System.Drawing.Point(81, 102);
+            this.textBoxTax.Location = new System.Drawing.Point(81, 114);
             this.textBoxTax.Name = "textBoxTax";
             this.textBoxTax.Size = new System.Drawing.Size(131, 23);
             this.textBoxTax.TabIndex = 0;
@@ -225,7 +225,7 @@ namespace InventaryWMS
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
             this.label3.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label3.Location = new System.Drawing.Point(20, 106);
+            this.label3.Location = new System.Drawing.Point(20, 118);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(53, 13);
             this.label3.TabIndex = 0;
@@ -237,7 +237,7 @@ namespace InventaryWMS
             this.textBoxDiscount2.BackColor = System.Drawing.Color.PaleGoldenrod;
             this.textBoxDiscount2.Enabled = false;
             this.textBoxDiscount2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxDiscount2.Location = new System.Drawing.Point(81, 73);
+            this.textBoxDiscount2.Location = new System.Drawing.Point(81, 85);
             this.textBoxDiscount2.Name = "textBoxDiscount2";
             this.textBoxDiscount2.Size = new System.Drawing.Size(131, 23);
             this.textBoxDiscount2.TabIndex = 0;
@@ -249,7 +249,7 @@ namespace InventaryWMS
             this.textBoxSubtotal.BackColor = System.Drawing.Color.LightCoral;
             this.textBoxSubtotal.Enabled = false;
             this.textBoxSubtotal.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxSubtotal.Location = new System.Drawing.Point(81, 44);
+            this.textBoxSubtotal.Location = new System.Drawing.Point(81, 56);
             this.textBoxSubtotal.Name = "textBoxSubtotal";
             this.textBoxSubtotal.Size = new System.Drawing.Size(131, 23);
             this.textBoxSubtotal.TabIndex = 0;
@@ -260,7 +260,7 @@ namespace InventaryWMS
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
             this.label2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label2.Location = new System.Drawing.Point(20, 77);
+            this.label2.Location = new System.Drawing.Point(20, 89);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(62, 13);
             this.label2.TabIndex = 0;
@@ -271,25 +271,11 @@ namespace InventaryWMS
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
             this.label1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label1.Location = new System.Drawing.Point(20, 48);
+            this.label1.Location = new System.Drawing.Point(20, 60);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(49, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "Subtotal:";
-            // 
-            // textBoxNumberrows
-            // 
-            this.textBoxNumberrows.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxNumberrows.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxNumberrows.ForeColor = System.Drawing.Color.Red;
-            this.textBoxNumberrows.Location = new System.Drawing.Point(7, 137);
-            this.textBoxNumberrows.Name = "textBoxNumberrows";
-            this.textBoxNumberrows.ReadOnly = true;
-            this.textBoxNumberrows.Size = new System.Drawing.Size(208, 23);
-            this.textBoxNumberrows.TabIndex = 0;
-            this.textBoxNumberrows.TabStop = false;
-            this.textBoxNumberrows.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.textBoxNumberrows.TextChanged += new System.EventHandler(this.textBoxNumberrows_TextChanged);
             // 
             // comboBoxLocation
             // 
@@ -310,7 +296,7 @@ namespace InventaryWMS
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxSerial.Location = new System.Drawing.Point(127, 34);
             this.textBoxSerial.Name = "textBoxSerial";
-            this.textBoxSerial.Size = new System.Drawing.Size(341, 20);
+            this.textBoxSerial.Size = new System.Drawing.Size(213, 20);
             this.textBoxSerial.TabIndex = 10;
             this.textBoxSerial.Click += new System.EventHandler(this.Control_Click);
             this.textBoxSerial.TextChanged += new System.EventHandler(this.textBoxSerial_TextChanged);
@@ -335,7 +321,7 @@ namespace InventaryWMS
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxNameProduct.Location = new System.Drawing.Point(127, 60);
             this.textBoxNameProduct.Name = "textBoxNameProduct";
-            this.textBoxNameProduct.Size = new System.Drawing.Size(341, 20);
+            this.textBoxNameProduct.Size = new System.Drawing.Size(213, 20);
             this.textBoxNameProduct.TabIndex = 11;
             this.textBoxNameProduct.Click += new System.EventHandler(this.Control_Click);
             this.textBoxNameProduct.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
@@ -350,7 +336,7 @@ namespace InventaryWMS
             this.textBoxPedimento.Location = new System.Drawing.Point(102, 139);
             this.textBoxPedimento.MaxLength = 15;
             this.textBoxPedimento.Name = "textBoxPedimento";
-            this.textBoxPedimento.Size = new System.Drawing.Size(267, 23);
+            this.textBoxPedimento.Size = new System.Drawing.Size(180, 23);
             this.textBoxPedimento.TabIndex = 5;
             this.textBoxPedimento.Text = "N/P";
             this.textBoxPedimento.Click += new System.EventHandler(this.Control_Click);
@@ -364,7 +350,7 @@ namespace InventaryWMS
             this.textBoxRemission.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.textBoxRemission.Location = new System.Drawing.Point(102, 52);
             this.textBoxRemission.Name = "textBoxRemission";
-            this.textBoxRemission.Size = new System.Drawing.Size(267, 23);
+            this.textBoxRemission.Size = new System.Drawing.Size(180, 23);
             this.textBoxRemission.TabIndex = 2;
             this.textBoxRemission.Text = "N/P";
             this.textBoxRemission.Click += new System.EventHandler(this.Control_Click);
@@ -386,7 +372,7 @@ namespace InventaryWMS
             "N"});
             this.comboBoxRegimen.Location = new System.Drawing.Point(102, 81);
             this.comboBoxRegimen.Name = "comboBoxRegimen";
-            this.comboBoxRegimen.Size = new System.Drawing.Size(267, 23);
+            this.comboBoxRegimen.Size = new System.Drawing.Size(180, 23);
             this.comboBoxRegimen.TabIndex = 3;
             this.comboBoxRegimen.Click += new System.EventHandler(this.Control_Click);
             this.comboBoxRegimen.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.comboBoxRegimen_KeyPress);
@@ -421,7 +407,7 @@ namespace InventaryWMS
             this.textBox1.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.textBox1.Location = new System.Drawing.Point(102, 110);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(267, 23);
+            this.textBox1.Size = new System.Drawing.Size(180, 23);
             this.textBox1.TabIndex = 4;
             this.textBox1.Click += new System.EventHandler(this.Control_Click);
             this.textBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
@@ -444,7 +430,7 @@ namespace InventaryWMS
             "SORTED"});
             this.comboBoxStore.Location = new System.Drawing.Point(102, 23);
             this.comboBoxStore.Name = "comboBoxStore";
-            this.comboBoxStore.Size = new System.Drawing.Size(267, 23);
+            this.comboBoxStore.Size = new System.Drawing.Size(180, 23);
             this.comboBoxStore.TabIndex = 1;
             this.comboBoxStore.Click += new System.EventHandler(this.Control_Click);
             this.comboBoxStore.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.comboBoxStore_KeyPress);
@@ -468,7 +454,7 @@ namespace InventaryWMS
             this.panel4.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.panel4.Location = new System.Drawing.Point(11, 13);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1008, 173);
+            this.panel4.Size = new System.Drawing.Size(880, 173);
             this.panel4.TabIndex = 76;
             this.panel4.Paint += new System.Windows.Forms.PaintEventHandler(this.panel4_Paint);
             // 
@@ -574,7 +560,7 @@ namespace InventaryWMS
             this.panel5.Controls.Add(this.label11);
             this.panel5.Location = new System.Drawing.Point(234, 1);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(399, 170);
+            this.panel5.Size = new System.Drawing.Size(312, 170);
             this.panel5.TabIndex = 105;
             // 
             // label16
@@ -672,140 +658,10 @@ namespace InventaryWMS
             this.panel6.Controls.Add(this.dateTimePickerReception);
             this.panel6.Controls.Add(this.label14);
             this.panel6.Controls.Add(this.label13);
-            this.panel6.Location = new System.Drawing.Point(634, 1);
+            this.panel6.Location = new System.Drawing.Point(548, 1);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(373, 170);
+            this.panel6.Size = new System.Drawing.Size(331, 170);
             this.panel6.TabIndex = 0;
-            // 
-            // comboBoxTransport
-            // 
-            this.comboBoxTransport.FormattingEnabled = true;
-            this.comboBoxTransport.ItemHeight = 15;
-            this.comboBoxTransport.Location = new System.Drawing.Point(123, 110);
-            this.comboBoxTransport.Name = "comboBoxTransport";
-            this.comboBoxTransport.Size = new System.Drawing.Size(215, 23);
-            this.comboBoxTransport.TabIndex = 8;
-            this.comboBoxTransport.Leave += new System.EventHandler(this.Control_Leave);
-            // 
-            // textBoxPay
-            // 
-            this.textBoxPay.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.textBoxPay.Location = new System.Drawing.Point(123, 82);
-            this.textBoxPay.Name = "textBoxPay";
-            this.textBoxPay.Size = new System.Drawing.Size(196, 23);
-            this.textBoxPay.TabIndex = 7;
-            // 
-            // textBoxReception
-            // 
-            this.textBoxReception.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.textBoxReception.Location = new System.Drawing.Point(123, 53);
-            this.textBoxReception.Name = "textBoxReception";
-            this.textBoxReception.Size = new System.Drawing.Size(196, 23);
-            this.textBoxReception.TabIndex = 6;
-            // 
-            // textBoxPediment
-            // 
-            this.textBoxPediment.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.textBoxPediment.Location = new System.Drawing.Point(123, 24);
-            this.textBoxPediment.Name = "textBoxPediment";
-            this.textBoxPediment.Size = new System.Drawing.Size(196, 23);
-            this.textBoxPediment.TabIndex = 5;
-            // 
-            // label15
-            // 
-            this.label15.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label15.Location = new System.Drawing.Point(48, 110);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(62, 15);
-            this.label15.TabIndex = 99;
-            this.label15.Text = "Transporte";
-            // 
-            // label12
-            // 
-            this.label12.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label12.Location = new System.Drawing.Point(48, 27);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(64, 15);
-            this.label12.TabIndex = 96;
-            this.label12.Text = "P. Aduanal";
-            // 
-            // dateTimePickerPedimento
-            // 
-            this.dateTimePickerPedimento.Enabled = false;
-            this.dateTimePickerPedimento.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.dateTimePickerPedimento.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePickerPedimento.Location = new System.Drawing.Point(318, 24);
-            this.dateTimePickerPedimento.Name = "dateTimePickerPedimento";
-            this.dateTimePickerPedimento.Size = new System.Drawing.Size(20, 23);
-            this.dateTimePickerPedimento.TabIndex = 8;
-            this.dateTimePickerPedimento.Value = new System.DateTime(2023, 10, 13, 0, 0, 0, 0);
-            this.dateTimePickerPedimento.ValueChanged += new System.EventHandler(this.dateTimePickerPedimento_ValueChanged);
-            // 
-            // dateTimePickerPay
-            // 
-            this.dateTimePickerPay.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dateTimePickerPay.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.dateTimePickerPay.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePickerPay.Location = new System.Drawing.Point(318, 82);
-            this.dateTimePickerPay.Name = "dateTimePickerPay";
-            this.dateTimePickerPay.Size = new System.Drawing.Size(20, 23);
-            this.dateTimePickerPay.TabIndex = 10;
-            this.dateTimePickerPay.Value = new System.DateTime(2023, 10, 13, 0, 0, 0, 0);
-            this.dateTimePickerPay.ValueChanged += new System.EventHandler(this.dateTimePickerPay_ValueChanged);
-            // 
-            // dateTimePickerReception
-            // 
-            this.dateTimePickerReception.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dateTimePickerReception.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.dateTimePickerReception.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePickerReception.Location = new System.Drawing.Point(318, 53);
-            this.dateTimePickerReception.Name = "dateTimePickerReception";
-            this.dateTimePickerReception.Size = new System.Drawing.Size(20, 23);
-            this.dateTimePickerReception.TabIndex = 9;
-            this.dateTimePickerReception.Value = new System.DateTime(2023, 10, 13, 0, 0, 0, 0);
-            this.dateTimePickerReception.ValueChanged += new System.EventHandler(this.dateTimePickerReception_ValueChanged);
-            // 
-            // label14
-            // 
-            this.label14.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label14.Location = new System.Drawing.Point(48, 85);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(49, 15);
-            this.label14.TabIndex = 98;
-            this.label14.Text = "Pagar el";
-            // 
-            // label13
-            // 
-            this.label13.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label13.Location = new System.Drawing.Point(48, 59);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(62, 15);
-            this.label13.TabIndex = 97;
-            this.label13.Text = "Recepcion";
             // 
             // panel7
             // 
@@ -827,20 +683,8 @@ namespace InventaryWMS
             this.panel7.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.panel7.Location = new System.Drawing.Point(11, 192);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(1008, 354);
+            this.panel7.Size = new System.Drawing.Size(880, 325);
             this.panel7.TabIndex = 77;
-            // 
-            // spinner
-            // 
-            this.spinner.BackColor = System.Drawing.Color.Transparent;
-            this.spinner.Location = new System.Drawing.Point(624, 314);
-            this.spinner.MaximumSize = new System.Drawing.Size(40, 40);
-            this.spinner.MinimumSize = new System.Drawing.Size(40, 40);
-            this.spinner.Name = "spinner";
-            this.spinner.Size = new System.Drawing.Size(40, 40);
-            this.spinner.TabIndex = 113;
-            this.spinner.TabStop = false;
-            this.spinner.Visible = false;
             // 
             // panel8
             // 
@@ -857,28 +701,19 @@ namespace InventaryWMS
             this.panel8.Controls.Add(this.label18);
             this.panel8.Location = new System.Drawing.Point(20, 15);
             this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(486, 120);
+            this.panel8.Size = new System.Drawing.Size(358, 120);
             this.panel8.TabIndex = 0;
             // 
             // comboBoxProduct
             // 
-            this.comboBoxProduct.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.comboBoxProduct.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.comboBoxProduct.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.comboBoxProduct.Cursor = System.Windows.Forms.Cursors.Default;
-            this.comboBoxProduct.DropDownWidth = 150;
-            this.comboBoxProduct.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.comboBoxProduct.FormattingEnabled = true;
-            this.comboBoxProduct.Location = new System.Drawing.Point(127, 5);
+            this.comboBoxProduct.Location = new System.Drawing.Point(127, 8);
             this.comboBoxProduct.Name = "comboBoxProduct";
-            this.comboBoxProduct.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.comboBoxProduct.Size = new System.Drawing.Size(341, 23);
-            this.comboBoxProduct.TabIndex = 9;
+            this.comboBoxProduct.Size = new System.Drawing.Size(213, 21);
+            this.comboBoxProduct.TabIndex = 99;
             this.comboBoxProduct.SelectedIndexChanged += new System.EventHandler(this.comboBoxProduct_SelectedIndexChanged_1);
-            this.comboBoxProduct.Click += new System.EventHandler(this.Control_Click);
-            this.comboBoxProduct.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
-            this.comboBoxProduct.Leave += new System.EventHandler(this.Control_Leave);
             // 
             // label28
             // 
@@ -923,7 +758,7 @@ namespace InventaryWMS
             this.buttonbatch.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.buttonbatch.BackgroundImage = global::InventaryWMS.Properties.Resources.icons8_clasificar_abajo_643;
             this.buttonbatch.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.buttonbatch.Location = new System.Drawing.Point(448, 86);
+            this.buttonbatch.Location = new System.Drawing.Point(320, 86);
             this.buttonbatch.Name = "buttonbatch";
             this.buttonbatch.Size = new System.Drawing.Size(20, 23);
             this.buttonbatch.TabIndex = 98;
@@ -938,7 +773,7 @@ namespace InventaryWMS
             this.textBoxBatch.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.textBoxBatch.Location = new System.Drawing.Point(127, 86);
             this.textBoxBatch.Name = "textBoxBatch";
-            this.textBoxBatch.Size = new System.Drawing.Size(321, 23);
+            this.textBoxBatch.Size = new System.Drawing.Size(193, 23);
             this.textBoxBatch.TabIndex = 12;
             this.textBoxBatch.Click += new System.EventHandler(this.Control_Click);
             this.textBoxBatch.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxBatch_KeyPress);
@@ -969,7 +804,7 @@ namespace InventaryWMS
             this.panel9.Controls.Add(this.textBoxBox);
             this.panel9.Controls.Add(this.label19);
             this.panel9.Controls.Add(this.comboBoxContainer);
-            this.panel9.Location = new System.Drawing.Point(509, 15);
+            this.panel9.Location = new System.Drawing.Point(381, 15);
             this.panel9.Name = "panel9";
             this.panel9.Size = new System.Drawing.Size(256, 120);
             this.panel9.TabIndex = 0;
@@ -984,7 +819,7 @@ namespace InventaryWMS
             this.label21.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.label21.Location = new System.Drawing.Point(3, 66);
             this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(30, 15);
+            this.label21.Size = new System.Drawing.Size(31, 15);
             this.label21.TabIndex = 0;
             this.label21.Text = "Tipo";
             // 
@@ -1068,9 +903,9 @@ namespace InventaryWMS
             this.panel10.Controls.Add(this.label23);
             this.panel10.Controls.Add(this.textBox3);
             this.panel10.Controls.Add(this.label24);
-            this.panel10.Location = new System.Drawing.Point(766, 15);
+            this.panel10.Location = new System.Drawing.Point(640, 15);
             this.panel10.Name = "panel10";
-            this.panel10.Size = new System.Drawing.Size(228, 185);
+            this.panel10.Size = new System.Drawing.Size(228, 170);
             this.panel10.TabIndex = 1;
             // 
             // buttonRemove
@@ -1203,7 +1038,7 @@ namespace InventaryWMS
             this.buttonSettle.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonSettle.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.buttonSettle.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.buttonSettle.Location = new System.Drawing.Point(676, 322);
+            this.buttonSettle.Location = new System.Drawing.Point(548, 293);
             this.buttonSettle.Name = "buttonSettle";
             this.buttonSettle.Size = new System.Drawing.Size(86, 27);
             this.buttonSettle.TabIndex = 26;
@@ -1220,7 +1055,7 @@ namespace InventaryWMS
             this.buttonHand.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonHand.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.buttonHand.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.buttonHand.Location = new System.Drawing.Point(306, 323);
+            this.buttonHand.Location = new System.Drawing.Point(306, 294);
             this.buttonHand.Name = "buttonHand";
             this.buttonHand.Size = new System.Drawing.Size(86, 27);
             this.buttonHand.TabIndex = 25;
@@ -1237,7 +1072,7 @@ namespace InventaryWMS
             this.buttonReport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonReport.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.buttonReport.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.buttonReport.Location = new System.Drawing.Point(214, 323);
+            this.buttonReport.Location = new System.Drawing.Point(214, 294);
             this.buttonReport.Name = "buttonReport";
             this.buttonReport.Size = new System.Drawing.Size(86, 27);
             this.buttonReport.TabIndex = 24;
@@ -1254,7 +1089,7 @@ namespace InventaryWMS
             this.buttonPrintLabel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonPrintLabel.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.buttonPrintLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.buttonPrintLabel.Location = new System.Drawing.Point(122, 323);
+            this.buttonPrintLabel.Location = new System.Drawing.Point(122, 294);
             this.buttonPrintLabel.Name = "buttonPrintLabel";
             this.buttonPrintLabel.Size = new System.Drawing.Size(86, 27);
             this.buttonPrintLabel.TabIndex = 23;
@@ -1271,7 +1106,7 @@ namespace InventaryWMS
             this.buttonClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonClear.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.buttonClear.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.buttonClear.Location = new System.Drawing.Point(30, 323);
+            this.buttonClear.Location = new System.Drawing.Point(30, 294);
             this.buttonClear.Name = "buttonClear";
             this.buttonClear.Size = new System.Drawing.Size(86, 27);
             this.buttonClear.TabIndex = 22;
@@ -1300,13 +1135,14 @@ namespace InventaryWMS
             this.dataGridViewInputs.Name = "dataGridViewInputs";
             this.dataGridViewInputs.ReadOnly = true;
             this.dataGridViewInputs.RowHeadersVisible = false;
+            this.dataGridViewInputs.RowHeadersWidth = 62;
             dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.ControlLightLight;
             dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.dataGridViewInputs.RowsDefaultCellStyle = dataGridViewCellStyle4;
-            this.dataGridViewInputs.Size = new System.Drawing.Size(742, 164);
+            this.dataGridViewInputs.Size = new System.Drawing.Size(614, 137);
             this.dataGridViewInputs.TabIndex = 0;
             this.dataGridViewInputs.TabStop = false;
             this.dataGridViewInputs.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewInputs_CellClick);
@@ -1325,17 +1161,170 @@ namespace InventaryWMS
             this.panel2.Controls.Add(this.label4);
             this.panel2.Controls.Add(this.label2);
             this.panel2.Controls.Add(this.label1);
-            this.panel2.Location = new System.Drawing.Point(769, 162);
+            this.panel2.Location = new System.Drawing.Point(641, 134);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(736, 346);
             this.panel2.TabIndex = 112;
+            // 
+            // textBoxNumberrows
+            // 
+            this.textBoxNumberrows.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxNumberrows.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxNumberrows.ForeColor = System.Drawing.Color.Red;
+            this.textBoxNumberrows.Location = new System.Drawing.Point(7, 137);
+            this.textBoxNumberrows.Name = "textBoxNumberrows";
+            this.textBoxNumberrows.ReadOnly = true;
+            this.textBoxNumberrows.Size = new System.Drawing.Size(208, 23);
+            this.textBoxNumberrows.TabIndex = 0;
+            this.textBoxNumberrows.TabStop = false;
+            this.textBoxNumberrows.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBoxNumberrows.TextChanged += new System.EventHandler(this.textBoxNumberrows_TextChanged);
+            // 
+            // spinner
+            // 
+            this.spinner.BackColor = System.Drawing.Color.Transparent;
+            this.spinner.Location = new System.Drawing.Point(506, 287);
+            this.spinner.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.spinner.MaximumSize = new System.Drawing.Size(40, 40);
+            this.spinner.MinimumSize = new System.Drawing.Size(40, 40);
+            this.spinner.Name = "spinner";
+            this.spinner.Size = new System.Drawing.Size(40, 40);
+            this.spinner.TabIndex = 113;
+            this.spinner.TabStop = false;
+            this.spinner.Visible = false;
+            // 
+            // comboBoxTransport
+            // 
+            this.comboBoxTransport.FormattingEnabled = true;
+            this.comboBoxTransport.ItemHeight = 15;
+            this.comboBoxTransport.Location = new System.Drawing.Point(110, 117);
+            this.comboBoxTransport.Name = "comboBoxTransport";
+            this.comboBoxTransport.Size = new System.Drawing.Size(180, 23);
+            this.comboBoxTransport.TabIndex = 103;
+            // 
+            // textBoxPay
+            // 
+            this.textBoxPay.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.textBoxPay.Location = new System.Drawing.Point(110, 89);
+            this.textBoxPay.Name = "textBoxPay";
+            this.textBoxPay.Size = new System.Drawing.Size(161, 23);
+            this.textBoxPay.TabIndex = 102;
+            // 
+            // textBoxReception
+            // 
+            this.textBoxReception.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.textBoxReception.Location = new System.Drawing.Point(110, 60);
+            this.textBoxReception.Name = "textBoxReception";
+            this.textBoxReception.Size = new System.Drawing.Size(161, 23);
+            this.textBoxReception.TabIndex = 101;
+            // 
+            // textBoxPediment
+            // 
+            this.textBoxPediment.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.textBoxPediment.Location = new System.Drawing.Point(110, 31);
+            this.textBoxPediment.Name = "textBoxPediment";
+            this.textBoxPediment.Size = new System.Drawing.Size(161, 23);
+            this.textBoxPediment.TabIndex = 100;
+            // 
+            // label15
+            // 
+            this.label15.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label15.Location = new System.Drawing.Point(40, 117);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(63, 15);
+            this.label15.TabIndex = 110;
+            this.label15.Text = "Transporte";
+            // 
+            // label12
+            // 
+            this.label12.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label12.Location = new System.Drawing.Point(40, 34);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(64, 15);
+            this.label12.TabIndex = 107;
+            this.label12.Text = "P. Aduanal";
+            // 
+            // dateTimePickerPedimento
+            // 
+            this.dateTimePickerPedimento.Enabled = false;
+            this.dateTimePickerPedimento.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.dateTimePickerPedimento.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePickerPedimento.Location = new System.Drawing.Point(270, 31);
+            this.dateTimePickerPedimento.Name = "dateTimePickerPedimento";
+            this.dateTimePickerPedimento.Size = new System.Drawing.Size(20, 23);
+            this.dateTimePickerPedimento.TabIndex = 104;
+            this.dateTimePickerPedimento.Value = new System.DateTime(2023, 10, 13, 0, 0, 0, 0);
+            // 
+            // dateTimePickerPay
+            // 
+            this.dateTimePickerPay.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dateTimePickerPay.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.dateTimePickerPay.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePickerPay.Location = new System.Drawing.Point(270, 89);
+            this.dateTimePickerPay.Name = "dateTimePickerPay";
+            this.dateTimePickerPay.Size = new System.Drawing.Size(20, 23);
+            this.dateTimePickerPay.TabIndex = 106;
+            this.dateTimePickerPay.Value = new System.DateTime(2023, 10, 13, 0, 0, 0, 0);
+            // 
+            // dateTimePickerReception
+            // 
+            this.dateTimePickerReception.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dateTimePickerReception.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.dateTimePickerReception.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePickerReception.Location = new System.Drawing.Point(270, 60);
+            this.dateTimePickerReception.Name = "dateTimePickerReception";
+            this.dateTimePickerReception.Size = new System.Drawing.Size(20, 23);
+            this.dateTimePickerReception.TabIndex = 105;
+            this.dateTimePickerReception.Value = new System.DateTime(2023, 10, 13, 0, 0, 0, 0);
+            // 
+            // label14
+            // 
+            this.label14.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label14.Location = new System.Drawing.Point(40, 92);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(49, 15);
+            this.label14.TabIndex = 109;
+            this.label14.Text = "Pagar el";
+            // 
+            // label13
+            // 
+            this.label13.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label13.Location = new System.Drawing.Point(40, 66);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(62, 15);
+            this.label13.TabIndex = 108;
+            this.label13.Text = "Recepcion";
             // 
             // Input
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(47)))), ((int)(((byte)(75)))));
-            this.ClientSize = new System.Drawing.Size(1029, 554);
+            this.ClientSize = new System.Drawing.Size(903, 529);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel7);
@@ -1375,7 +1364,6 @@ namespace InventaryWMS
         private ComboBox comboBoxProviders;
         private ComboBox comboBoxStore;
         private TextBox textBoxNameProduct;
-        private TextBox textBoxNumberrows;
         private Panel panel1;
         private TextBox textBoxDiscount2;
         private TextBox textBoxSubtotal;
@@ -1433,7 +1421,6 @@ namespace InventaryWMS
         private TextBox textBoxBox;
         public Label label19;
         public Label label18;
-        private ComboBox comboBoxProduct;
         public Label label21;
         private TextBox textBoxPrice;
         private DateTimePicker dateTimePickerExpires;
@@ -1443,6 +1430,9 @@ namespace InventaryWMS
         private TextBox textBox3;
         public Label label24;
         private ComboBox comboBoxContainer;
+        private LoadingSpinner spinner;
+        private ComboBox comboBoxProduct;
+        private TextBox textBoxNumberrows;
         private ComboBox comboBoxTransport;
         private TextBox textBoxPay;
         private TextBox textBoxReception;
@@ -1454,6 +1444,5 @@ namespace InventaryWMS
         private DateTimePicker dateTimePickerReception;
         private Label label14;
         private Label label13;
-        private LoadingSpinner spinner;
     }
 }
