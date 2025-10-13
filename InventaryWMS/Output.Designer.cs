@@ -74,7 +74,6 @@
             this.textBoxBox = new System.Windows.Forms.TextBox();
             this.pictureBoxQuantity = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.spinner = new InventaryWMS.LoadingSpinner();
             this.buttonClear = new System.Windows.Forms.Button();
             this.panel5 = new System.Windows.Forms.Panel();
             this.label18 = new System.Windows.Forms.Label();
@@ -104,6 +103,8 @@
             this.buttonRemmisionCancel = new System.Windows.Forms.Button();
             this.labelRem = new System.Windows.Forms.Label();
             this.buttonClose = new System.Windows.Forms.Button();
+            this.spinner = new InventaryWMS.LoadingSpinner();
+            this.labelRemiss = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel6.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -142,8 +143,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1008, 171);
             this.panel1.TabIndex = 57;
-            this.panel1.Click += new System.EventHandler(this.panel2_Click);
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // buttonLoad
             // 
@@ -730,7 +729,6 @@
             this.textBoxBox.Size = new System.Drawing.Size(89, 23);
             this.textBoxBox.TabIndex = 64;
             this.textBoxBox.Click += new System.EventHandler(this.control_Click);
-            this.textBoxBox.TextChanged += new System.EventHandler(this.textBoxBox_TextChanged);
             this.textBoxBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxBox_KeyPress);
             // 
             // pictureBoxQuantity
@@ -750,6 +748,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.panel2.Controls.Add(this.labelRemiss);
             this.panel2.Controls.Add(this.spinner);
             this.panel2.Controls.Add(this.buttonClear);
             this.panel2.Controls.Add(this.panel5);
@@ -769,18 +768,6 @@
             this.panel2.Size = new System.Drawing.Size(1008, 288);
             this.panel2.TabIndex = 58;
             this.panel2.Click += new System.EventHandler(this.panel2_Click);
-            // 
-            // spinner
-            // 
-            this.spinner.BackColor = System.Drawing.Color.Transparent;
-            this.spinner.Location = new System.Drawing.Point(764, 1);
-            this.spinner.MaximumSize = new System.Drawing.Size(40, 40);
-            this.spinner.MinimumSize = new System.Drawing.Size(40, 40);
-            this.spinner.Name = "spinner";
-            this.spinner.Size = new System.Drawing.Size(40, 40);
-            this.spinner.TabIndex = 105;
-            this.spinner.TabStop = false;
-            this.spinner.Visible = false;
             // 
             // buttonClear
             // 
@@ -1152,7 +1139,6 @@
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(297, 39);
             this.panel7.TabIndex = 113;
-            this.panel7.Paint += new System.Windows.Forms.PaintEventHandler(this.panel7_Paint);
             // 
             // buttonRemmisionCancel
             // 
@@ -1182,7 +1168,6 @@
             this.labelRem.Size = new System.Drawing.Size(59, 15);
             this.labelRem.TabIndex = 111;
             this.labelRem.Text = "Remision:";
-            this.labelRem.Click += new System.EventHandler(this.labelRem_Click);
             // 
             // buttonClose
             // 
@@ -1201,6 +1186,32 @@
             this.buttonClose.UseVisualStyleBackColor = false;
             this.buttonClose.Click += new System.EventHandler(this.buttonClose_Click);
             // 
+            // spinner
+            // 
+            this.spinner.BackColor = System.Drawing.Color.Transparent;
+            this.spinner.Location = new System.Drawing.Point(764, 1);
+            this.spinner.MaximumSize = new System.Drawing.Size(40, 40);
+            this.spinner.MinimumSize = new System.Drawing.Size(40, 40);
+            this.spinner.Name = "spinner";
+            this.spinner.Size = new System.Drawing.Size(40, 40);
+            this.spinner.TabIndex = 105;
+            this.spinner.TabStop = false;
+            this.spinner.Visible = false;
+            // 
+            // labelRemiss
+            // 
+            this.labelRemiss.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelRemiss.AutoSize = true;
+            this.labelRemiss.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelRemiss.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.labelRemiss.Location = new System.Drawing.Point(579, 261);
+            this.labelRemiss.Name = "labelRemiss";
+            this.labelRemiss.Size = new System.Drawing.Size(160, 15);
+            this.labelRemiss.TabIndex = 59;
+            this.labelRemiss.Text = "Ya esta cancelada la remision";
+            // 
             // Output
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1214,7 +1225,6 @@
             this.Name = "Output";
             this.Text = "Output";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Output_FormClosing);
-            this.Load += new System.EventHandler(this.Output_Load);
             this.Click += new System.EventHandler(this.Output_Click);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -1320,5 +1330,6 @@
         private System.Windows.Forms.Button buttonLoad;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Panel panel7;
+        private System.Windows.Forms.Label labelRemiss;
     }
 }

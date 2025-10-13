@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web.UI;
+using System.Windows.Forms;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace InventaryWMS
 {
@@ -390,4 +393,86 @@ namespace InventaryWMS
 
         }
     }
+
+    public class InvoiceData
+    {
+        public int WarehouseId { get; set; }
+        public int SessionId { get; set; }
+        public DateTime CurrentDate { get; set; }
+        public string InvoiceNumber { get; set; }
+        public object[] InvoiceHeaderParameters { get; set; }
+        private int _idclient { get; set; }
+
+        public InvoiceData(int warehouseId, int sessionId, DateTime currentDate, string textBoxInvoice, string textBoxSubtotal, string textBoxDiscount2, string textBoxTax, string textBoxTotal, string textBox1)
+        {
+            WarehouseId = warehouseId;
+            SessionId = sessionId;
+            CurrentDate = currentDate;
+            InvoiceNumber = textBoxInvoice; // Deberías pasar el valor real
+
+            // Creación de un array de parámetros para la inserción segura
+            InvoiceHeaderParameters = new object[]
+            {
+                _idclient, 1, CurrentDate.ToString("yyyyMMdd HH:mm:ss"), InvoiceNumber,
+                "Documentos", "Remision", "Referencia", WarehouseId, 1,
+                "Comentarios", SessionId, 1,
+                textBoxSubtotal.Replace("$", ""), // Reemplazar con el valor real
+                textBoxDiscount2.Replace("$", ""), // Reemplazar con el valor real
+                textBoxTax.Replace("$", ""), // Reemplazar con el valor real
+                textBoxTotal.Replace("$", ""), // Reemplazar con el valor real
+                textBox1 // Reemplazar con el valor real
+            };
+        }
+    }
+
+    public class InvoiceItemData
+    {
+        public int ProductId { get; set; }
+        public int ClientProviderId { get; set; }
+        public int InternalWarehouseId { get; set; }
+        public string Pieces { get; set; }
+        public string Invoice { get; set; }
+        public string Batch { get; set; }
+        public string ExternalSerial { get; set; }
+        public string ExpirationDate { get; set; }
+        public string Serial { get; set; }
+        public string CustomsDocument { get; set; }
+        public string Regime { get; set; }
+        public string Remission { get; set; }
+        public string CustomsDate { get; set; }
+        public string PayDate { get; set; }
+        public string Container { get; set; }
+        public string Cost { get; set; }
+        public string Price { get; set; }
+        public string Transport { get; set; }
+        public object[] ProductValues { get; set; }
+
+        SelectSQL selectsql { get; set; }
+        public InvoiceItemData(DataRow row, int clientId)
+        {
+            selectsql = new SelectSQL();
+            ProductId = selectsql.GetIdProducts(row["Código"].ToString());
+            ProductValues = selectsql.GetValuesFromProduct(ProductId).Rows[0].ItemArray;
+            ClientProviderId = selectsql.GetIdClientProvider(row["Provedor"].ToString(), clientId);
+            InternalWarehouseId = selectsql.GetIdInternalWarehouses(row["Bodega"].ToString());
+
+            Pieces = row["Piezas"].ToString();
+            Invoice = row["Factura"].ToString();
+            Batch = row["Lote"].ToString();
+            ExternalSerial = row["NumeroSerie"].ToString();
+            ExpirationDate = DateTime.Parse(row["Caduca"].ToString()).ToString("yyyyMMdd");
+            Serial = row["Serie"].ToString();
+            CustomsDocument = row["Pedimento"].ToString();
+            Regime = row["Regimen"].ToString();
+            Remission = row["Remision"].ToString();
+            CustomsDate = DateTime.Parse(row["FechaPedimento"].ToString()).ToString("yyyyMMdd");
+            PayDate = DateTime.Parse(row["FechaPagar"].ToString()).ToString("yyyyMMdd");
+            Container = row["Contenedor"].ToString();
+            Cost = row["Costo"].ToString().Replace("$", "");
+            Price = row["Precio"].ToString().Replace("$", "");
+            Transport = row["Transporte"].ToString();
+        }
+    }
+
+
 }
