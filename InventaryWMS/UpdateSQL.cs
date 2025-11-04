@@ -34,7 +34,7 @@ namespace InventaryWMS
             }
             catch (Exception ex)
             {
-                System.Console.WriteLine("Error :" + ex.Message);
+                Console.WriteLine("Error :" + ex.Message);
                 message = "Error :" + ex.Message;
             }
 
@@ -165,7 +165,7 @@ namespace InventaryWMS
             }
             catch (Exception ex)
             {
-                System.Console.WriteLine("Error :" + ex.Message);
+                Console.WriteLine("Error :" + ex.Message);
                 message = "Error :" + ex.Message;
             }
         }
@@ -205,7 +205,7 @@ namespace InventaryWMS
             }
             catch (Exception ex)
             {
-                System.Console.WriteLine("Error :" + ex.Message);
+                Console.WriteLine("Error :" + ex.Message);
                 _connection.Close();
                 message = "Error :" + ex.Message;
             }
@@ -239,7 +239,7 @@ namespace InventaryWMS
             }
             catch (Exception ex)
             {
-                System.Console.WriteLine("Error :" + ex.Message);
+                Console.WriteLine("Error :" + ex.Message);
                 _connection.Close();
                 message = "Error :" + ex.Message;
             }
@@ -291,7 +291,7 @@ namespace InventaryWMS
             catch (Exception ex)
             {
                 Console.WriteLine("No se realizaron cambios.");
-                System.Console.WriteLine("Error :" + ex.Message);
+                Console.WriteLine("Error :" + ex.Message);
                 _connection.Close();
                 message = "Error :" + ex.Message;
             }
@@ -343,7 +343,7 @@ namespace InventaryWMS
             }
             catch (Exception ex)
             {
-                System.Console.WriteLine("Error :" + ex.Message);
+                Console.WriteLine("Error :" + ex.Message);
                 _connection.Close();
                 message = "Error :" + ex.Message;
             }
@@ -413,7 +413,7 @@ namespace InventaryWMS
             }
             catch (Exception ex)
             {
-                System.Console.WriteLine("Error :" + ex.Message);
+                Console.WriteLine("Error :" + ex.Message);
                 _connection.Close();
                 message = "Error :" + ex.Message;
             }
@@ -454,7 +454,7 @@ namespace InventaryWMS
             }
             catch (Exception ex)
             {
-                System.Console.WriteLine("Error :" + ex.Message);
+                Console.WriteLine("Error :" + ex.Message);
                 _connection.Close();
                 message = "Error :" + ex.Message;
             }
@@ -489,7 +489,7 @@ namespace InventaryWMS
             }
             catch (Exception ex)
             {
-                System.Console.WriteLine("Error :" + ex.Message);
+                Console.WriteLine("Error :" + ex.Message);
                 _connection.Close();
                 message = "Error :" + ex.Message;
             }
@@ -524,7 +524,7 @@ namespace InventaryWMS
             }
             catch (Exception ex)
             {
-                System.Console.WriteLine("Error :" + ex.Message);
+                Console.WriteLine("Error :" + ex.Message);
                 _connection.Close();
                 message = "Error :" + ex.Message;
             }
@@ -559,7 +559,7 @@ namespace InventaryWMS
             }
             catch (Exception ex)
             {
-                System.Console.WriteLine("Error :" + ex.Message);
+                Console.WriteLine("Error :" + ex.Message);
                 _connection.Close();
                 message = "Error :" + ex.Message;
             }
@@ -597,7 +597,7 @@ namespace InventaryWMS
             }
             catch (Exception ex)
             {
-                System.Console.WriteLine("Error :" + ex.Message);
+                Console.WriteLine("Error :" + ex.Message);
                 _connection.Close();
                 message = "Error :" + ex.Message;
             }
@@ -631,7 +631,7 @@ namespace InventaryWMS
             }
             catch (Exception ex)
             {
-                System.Console.WriteLine("Error :" + ex.Message);
+                Console.WriteLine("Error :" + ex.Message);
                 _connection.Close();
                 message = "Error :" + ex.Message;
             }
@@ -664,7 +664,7 @@ namespace InventaryWMS
             }
             catch (Exception ex)
             {
-                System.Console.WriteLine("Error :" + ex.Message);
+                Console.WriteLine("Error :" + ex.Message);
                 _connection.Close();
                 message = "Error :" + ex.Message;
             }
@@ -700,7 +700,7 @@ namespace InventaryWMS
             }
             catch (Exception ex)
             {
-                System.Console.WriteLine("Error :" + ex.Message);
+                Console.WriteLine("Error :" + ex.Message);
                 _connection.Close();
                 message = "Error :" + ex.Message;
             }
@@ -736,7 +736,7 @@ namespace InventaryWMS
             }
             catch (Exception ex)
             {
-                System.Console.WriteLine("Error :" + ex.Message);
+                Console.WriteLine("Error :" + ex.Message);
                 _connection.Close();
                 message = "Error :" + ex.Message;
             }
@@ -770,7 +770,7 @@ namespace InventaryWMS
             }
             catch (Exception ex)
             {
-                System.Console.WriteLine("Error :" + ex.Message);
+                Console.WriteLine("Error :" + ex.Message);
                 _connection.Close();
                 message = "Error :" + ex.Message;
             }
@@ -803,7 +803,7 @@ namespace InventaryWMS
             }
             catch (Exception ex)
             {
-                System.Console.WriteLine("Error :" + ex.Message);
+                Console.WriteLine("Error :" + ex.Message);
                 _connection.Close();
                 message = "Error :" + ex.Message;
             }
@@ -836,7 +836,7 @@ namespace InventaryWMS
             }
             catch (Exception ex)
             {
-                System.Console.WriteLine("Error :" + ex.Message);
+                Console.WriteLine("Error :" + ex.Message);
                 _connection.Close();
                 message = "Error :" + ex.Message;
             }
@@ -868,7 +868,7 @@ namespace InventaryWMS
             }
             catch (Exception ex)
             {
-                System.Console.WriteLine("Error :" + ex.Message);
+                Console.WriteLine("Error :" + ex.Message);
                 _connection.Close();
                 message = "Error :" + ex.Message;
             }
@@ -901,7 +901,7 @@ namespace InventaryWMS
             }
             catch (Exception ex)
             {
-                System.Console.WriteLine("Error :" + ex.Message);
+                Console.WriteLine("Error :" + ex.Message);
                 _connection.Close();
                 message = "Error :" + ex.Message;
             }
