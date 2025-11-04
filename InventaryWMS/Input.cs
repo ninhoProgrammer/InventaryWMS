@@ -1743,7 +1743,7 @@ namespace InventaryWMS
 
         private void HandleSuccess(string invoiceNumber)
         {
-            this.Cursor = Cursors.Default;
+            Cursor = Cursors.Default;
             MessageBox.Show("Se ingresó correctamente.");
             insertsql.SaveToBinnacle($"Ingreso con factura: {invoiceNumber} creado con éxito");
             buttonEneble(false);

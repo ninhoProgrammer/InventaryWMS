@@ -22,10 +22,8 @@ namespace InventaryWMS
         FormValidate formValidate { get; set; }
         WorkOrder form { get; set; }
         Configurations configurations { get; set; }
-        private DataTable allLotes { get; set; }
         private DataTable allSeries { get; set; }
         private bool _saveFull { get; set; }
-        private List<string> allItems { get; set; }
         static string reportPath { get; set; }
         private bool _order { get; set; }
         private bool _up { get; set; }
@@ -70,13 +68,10 @@ namespace InventaryWMS
                 comboBoxWare.SelectedIndex = 0;
                 bacthCombo(true);
                 selectSQL.SerialNoIdProductsNoBatchAComboBox(comboBoxSerial, _idClient, _internalwarehouse);
-                allLotes = selectSQL.GetAllLotes(_idClient, _internalwarehouse);
-                allSeries = selectSQL.GetAllSeries(_idClient, _internalwarehouse);
-
                 Clients clients = selectSQL.FillDateClients(selectSQL.GetClients(_idClient));
                 _picking = 0;
                 dateTimePickerInitialDate.Value = DateTime.Now;
-                allItems = new List<string>();
+               
                 _orderedBox = 0;
                 buttonRemission.Enabled = false;
                 buttonProforma.Enabled = false;
@@ -206,7 +201,7 @@ namespace InventaryWMS
             {
                 for (int i = 0; i < dataProducts.Rows.Count; i++)
                 {
-                    Inventary inventary = selectSQL.FillDateInventory(int.Parse(dataProducts.Rows[i].Cells[1].Value.ToString()));
+                    Inventary inventary = selectSQL.FillDateInventory(int.Parse(dataProducts.Rows[i].Cells["IDINVOICE_ITEMS"].Value.ToString()));
 
                     updateSQL.UpdateProformaAndRemission("", inventary.ID_INVOICE_ITEM, 1, true);
                     updateSQL.UpdateInventary(inventary.ID_INVOICE_ITEM, 1, true);
@@ -519,40 +514,12 @@ namespace InventaryWMS
 
         private void comboBoxLote_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (comboBoxLote.SelectedItem == null)
-            {
-                return; // Salir del método si no hay nada seleccionado.
-            }
-
-            comboBoxSerial.DataSource = null;
-
-            // Obtén los valores seleccionados de los otros ComboBoxes
-            string loteSeleccionado = comboBoxLote.Text;
-            int idProductoSeleccionado = -1;
-
-            if (comboBoxPart.SelectedItem != null)
-            {
-                idProductoSeleccionado = selectSQL.TakeIdProducts(comboBoxPart.Text);
-            }
-
-            // Construye la cadena de filtro para la DataTable
-            string filterExpression = $"BATCH = '{loteSeleccionado}'";
-            if (idProductoSeleccionado != -1)
-            {
-                filterExpression += $" AND IDPRODUCTS = {idProductoSeleccionado}";
-            }
-
-            // Filtra la DataTable en memoria
-            DataRow[] filteredRows = allSeries.Select(filterExpression);
-
-            // Crea una nueva DataTable para el ComboBox y llena el control
-            if (filteredRows.Length > 0)
-            {
-                DataTable filteredTable = filteredRows.CopyToDataTable();
-                comboBoxSerial.DataSource = filteredTable;
-                comboBoxSerial.DisplayMember = "SERIAL";
-                comboBoxSerial.SelectedIndex = -1;
-            }
+            comboBoxSerial.Items.Clear();
+            comboBoxSerial.Text = "";
+            if (comboBoxPart.Text == "")
+                selectSQL.SerialNoIdProductsAComboBox(comboBoxSerial, comboBoxLote.Text, _internalwarehouse);
+            else
+                selectSQL.SerialAComboBox(comboBoxSerial, selectSQL.TakeIdProducts(comboBoxPart.Text), comboBoxLote.Text, _internalwarehouse);
         }
 
         private void pictureBoxDelete_Click(object sender, EventArgs e)
@@ -624,31 +591,16 @@ namespace InventaryWMS
 
         private void comboBoxPart_SelectedIndexChanged(object sender, EventArgs e)
         {
-            int idProduct = selectSQL.TakeIdProducts(comboBoxPart.Text);
-
-            // Por estas líneas correctas:
-            comboBoxLote.DataSource = null;
-            comboBoxSerial.DataSource = null;
+            comboBoxLote.Items.Clear();
+            comboBoxLote.Text = string.Empty;
+            if (comboBoxBill.Text == "")
+                bacthCombo(true);
+            else
+                bacthCombo(false);
             // Filtra los datos de las colecciones en memoria
-            DataRow[] filteredLotes = allLotes.Select("IdProducts = " + idProduct);
-            DataRow[] filteredSeries = allSeries.Select("IdProducts = " + idProduct);
-
-            // Llena los ComboBox con los datos filtrados
-            if (filteredLotes.Length > 0)
-            {
-                DataTable filteredLoteTable = filteredLotes.CopyToDataTable();
-                comboBoxLote.DataSource = filteredLoteTable;
-                comboBoxLote.DisplayMember = "BATCH";
-                comboBoxLote.SelectedIndex = -1;
-            }
-
-            if (filteredSeries.Length > 0)
-            {
-                DataTable filteredSeriesTable = filteredSeries.CopyToDataTable();
-                comboBoxSerial.DataSource = filteredSeriesTable;
-                comboBoxSerial.DisplayMember = "SERIAL";
-                comboBoxSerial.SelectedIndex = -1;
-            }
+            comboBoxSerial.Items.Clear();
+            comboBoxSerial.Text = "";
+            selectSQL.SerialNoBatchAComboBox(comboBoxSerial, selectSQL.TakeIdProducts(comboBoxPart.Text), _internalwarehouse);
         }
 
         private void numericUpDownOrder_ValueChanged(object sender, EventArgs e)
@@ -702,7 +654,7 @@ namespace InventaryWMS
                 {
                     for (int i = 0; i < dataProducts.Rows.Count; i++)
                     {
-                        Inventary inventary = selectSQL.FillDateInventory(int.Parse(dataProducts.Rows[i].Cells[1].Value.ToString()));
+                        Inventary inventary = selectSQL.FillDateInventory(int.Parse(dataProducts.Rows[i].Cells["IDINVOICE_ITEMS"].Value.ToString()));
 
                         updateSQL.UpdateProformaAndRemission(_prefix, inventary.ID_INVOICE_ITEM, 0, false);
                         updateSQL.UpdateInventary(inventary.ID_INVOICE_ITEM, 0, false);
@@ -745,7 +697,7 @@ namespace InventaryWMS
                         {
                             for (int i = 0; i < dataProducts.Rows.Count; i++)
                             {
-                                Inventary inventary = selectSQL.FillDateInventory(int.Parse(dataProducts.Rows[i].Cells[1].Value.ToString()));
+                                Inventary inventary = selectSQL.FillDateInventory(int.Parse(dataProducts.Rows[i].Cells["IDINVOICE_ITEMS"].Value.ToString()));
 
                                 updateSQL.UpdateProformaAndRemission("", inventary.ID_INVOICE_ITEM, 1, true);
                                 updateSQL.UpdateInventary(inventary.ID_INVOICE_ITEM, 1, true);
@@ -783,7 +735,7 @@ namespace InventaryWMS
                     {
                         for (int i = 0; i < dataProducts.Rows.Count; i++)
                         {
-                            Inventary inventary = selectSQL.FillDateInventory(int.Parse(dataProducts.Rows[i].Cells[1].Value.ToString()));
+                            Inventary inventary = selectSQL.FillDateInventory(int.Parse(dataProducts.Rows[i].Cells["IDINVOICE_ITEMS"].Value.ToString()));
 
                             updateSQL.UpdateProformaAndRemission("", inventary.ID_INVOICE_ITEM, 1, true);
                             updateSQL.UpdateInventary(inventary.ID_INVOICE_ITEM, 1, true);
@@ -889,7 +841,7 @@ namespace InventaryWMS
             for (int i = 0; i < dataProducts.Rows.Count; i++)
             {
                 //obtiene tupla de tabla INVENTORY correspondiente al idInvoiceItem
-                Inventary inventary = selectSQL.FillDateInventory(int.Parse(dataProducts.Rows[i].Cells[1].Value.ToString()));
+                Inventary inventary = selectSQL.FillDateInventory(int.Parse(dataProducts.Rows[i].Cells["IDINVOICE_ITEMS"].Value.ToString()));
 
                 //actualiza tabla INVOICE_ITEMS columnas(REMISION,PROFORMA,STATUS,VALID)
                 //NOTA: prefix incluye prefijo y folio concatenados
@@ -969,7 +921,7 @@ namespace InventaryWMS
                 // Agregar filas a la DataTable
                 for (int i = 0; i < dataProducts.Rows.Count; i++)
                 {
-                    Inventary inventary = selectSQL.FillDateInventory(int.Parse(dataProducts.Rows[i].Cells[0].Value.ToString()));
+                    Inventary inventary = selectSQL.FillDateInventory(int.Parse(dataProducts.Rows[i].Cells["IDINVOICE_ITEMS"].Value.ToString()));
                     tableB.Rows.Add(inventary.IDINVENTORY, inventary.ID_INVOICE_ITEM, inventary.QUANTITY, 1, DateTime.Now, 1, true);
                 }
 
@@ -997,7 +949,7 @@ namespace InventaryWMS
                 // Agregar filas a la DataTable
                 for (int i = 0; i < dataProducts.Rows.Count; i++)
                 {
-                    Inventary inventary = selectSQL.FillDateInventory(int.Parse(dataProducts.Rows[i].Cells[0].Value.ToString()));
+                    Inventary inventary = selectSQL.FillDateInventory(int.Parse(dataProducts.Rows[i].Cells["IDINVOICE_ITEMS"].Value.ToString()));
                     remisionItemsTable.Rows.Add(inventary.IDINVENTORY, inventary.QUANTITY, _picking, inventary.QUANTITY - _picking, DateTime.Now, 1, true);
                 }
                 return remisionItemsTable;
@@ -1014,7 +966,7 @@ namespace InventaryWMS
             {
                 for (int i = 0; i < dataProducts.Rows.Count; i++)
                 {
-                    Inventary inventary = selectSQL.FillDateInventory(int.Parse(dataProducts.Rows[i].Cells[1].Value.ToString()));
+                    Inventary inventary = selectSQL.FillDateInventory(int.Parse(dataProducts.Rows[i].Cells["IDINVOICE_ITEMS"].Value.ToString()));
 
                     /*string remissionId = _prefix;
                     int inventoryItemId = inventary.ID_INVOICE_ITEM;
@@ -1602,7 +1554,9 @@ namespace InventaryWMS
                 buttonOrder.Enabled = true;
                 dataProducts.Columns[0].Visible = false;
                 dataProducts.Columns[1].Visible = false;
-                dataProducts.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+                dataProducts.Columns[2].Visible = false;
+                dataProducts.Columns[3].Visible = false;
+                dataProducts.Columns[4].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
                 panel2.Enabled = true;
                 comboBoxPart.Text = "";
                 comboBoxLote.Text = "";
