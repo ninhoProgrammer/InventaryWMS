@@ -1,5 +1,16 @@
-<?xml version="1.0" encoding="utf-8"?>
-<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner" xmlns:am="http://schemas.microsoft.com/sqlserver/reporting/authoringmetadata">
+  <am:AuthoringMetadata>
+    <am:CreatedBy>
+      <am:Name>MSRB</am:Name>
+      <am:Version>15.0.20283.0</am:Version>
+    </am:CreatedBy>
+    <am:UpdatedBy>
+      <am:Name>MSRB</am:Name>
+      <am:Version>15.0.20283.0</am:Version>
+    </am:UpdatedBy>
+    <am:LastModifiedTimestamp>2025-12-17T20:09:36.7402040Z</am:LastModifiedTimestamp>
+  </am:AuthoringMetadata>
   <AutoRefresh>0</AutoRefresh>
   <DataSources>
     <DataSource Name="WMS_REIS_NEWDataSet5">
@@ -7,6 +18,7 @@
         <DataProvider>System.Data.DataSet</DataProvider>
         <ConnectString>/* Local Connection */</ConnectString>
       </ConnectionProperties>
+      <rd:SecurityType>None</rd:SecurityType>
       <rd:DataSourceID>4a5df8dd-633e-4445-b8c6-83002c79f286</rd:DataSourceID>
     </DataSource>
     <DataSource Name="WMS_REIS_NEWDataSet4">
@@ -14,6 +26,7 @@
         <DataProvider>System.Data.DataSet</DataProvider>
         <ConnectString>/* Local Connection */</ConnectString>
       </ConnectionProperties>
+      <rd:SecurityType>None</rd:SecurityType>
       <rd:DataSourceID>6a48a5e7-1d43-4a4b-a0c2-1248df43ef32</rd:DataSourceID>
     </DataSource>
   </DataSources>
@@ -456,8 +469,6 @@
                     </Style>
                   </TextRun>
                 </TextRuns>
-                <LeftIndent>0cm</LeftIndent>
-                <RightIndent>0cm</RightIndent>
                 <Style>
                   <TextAlign>Left</TextAlign>
                   <LineHeight>10pt</LineHeight>
@@ -477,8 +488,6 @@
                     </Style>
                   </TextRun>
                 </TextRuns>
-                <LeftIndent>0cm</LeftIndent>
-                <RightIndent>0cm</RightIndent>
                 <Style>
                   <TextAlign>Left</TextAlign>
                   <LineHeight>9pt</LineHeight>
@@ -498,8 +507,6 @@
                     </Style>
                   </TextRun>
                 </TextRuns>
-                <LeftIndent>0cm</LeftIndent>
-                <RightIndent>0cm</RightIndent>
                 <Style>
                   <TextAlign>Left</TextAlign>
                   <LineHeight>9pt</LineHeight>
@@ -519,8 +526,6 @@
                     </Style>
                   </TextRun>
                 </TextRuns>
-                <LeftIndent>0cm</LeftIndent>
-                <RightIndent>0cm</RightIndent>
                 <Style>
                   <TextAlign>Left</TextAlign>
                   <LineHeight>9pt</LineHeight>
@@ -679,7 +684,7 @@ En tal virtud, por este medio me obligo a mantener en buen estado el equipo de c
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox20</rd:DefaultName>
-            <Top>16.20812cm</Top>
+            <Top>14.93812cm</Top>
             <Left>10.06758cm</Left>
             <Height>1.20854cm</Height>
             <Width>9.08812cm</Width>
@@ -729,7 +734,7 @@ En tal virtud, por este medio me obligo a mantener en buen estado el equipo de c
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox20</rd:DefaultName>
-            <Top>16.20812cm</Top>
+            <Top>14.93812cm</Top>
             <Left>0.88654cm</Left>
             <Height>1.20854cm</Height>
             <Width>9.14576cm</Width>
@@ -745,7 +750,7 @@ En tal virtud, por este medio me obligo a mantener en buen estado el equipo de c
             </Style>
           </Textbox>
         </ReportItems>
-        <Height>6.85695in</Height>
+        <Height>6.60695in</Height>
         <Style>
           <Border>
             <Style>None</Style>
@@ -755,7 +760,7 @@ En tal virtud, por este medio me obligo a mantener en buen estado el equipo de c
       <Width>7.80726in</Width>
       <Page>
         <PageHeader>
-          <Height>5.66996cm</Height>
+          <Height>4.92913cm</Height>
           <PrintOnFirstPage>true</PrintOnFirstPage>
           <PrintOnLastPage>true</PrintOnLastPage>
           <ReportItems>
@@ -984,7 +989,7 @@ En tal virtud, por este medio me obligo a mantener en buen estado el equipo de c
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox13</rd:DefaultName>
-              <Top>3.96558cm</Top>
+              <Top>3.67453cm</Top>
               <Left>2.92376cm</Left>
               <Height>0.86654cm</Height>
               <Width>13.98291cm</Width>
@@ -1015,7 +1020,7 @@ En tal virtud, por este medio me obligo a mantener en buen estado el equipo de c
               <Source>Embedded</Source>
               <Value>pieGrupoABG</Value>
               <Sizing>Fit</Sizing>
-              <Top>0.14111cm</Top>
+              <Top>0.1411cm</Top>
               <Height>1.95792cm</Height>
               <Width>19.81412cm</Width>
               <Style>

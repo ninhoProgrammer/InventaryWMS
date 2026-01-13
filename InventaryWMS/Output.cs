@@ -59,7 +59,7 @@ namespace InventaryWMS
             //Inicialice();
         }
 
-        private void Inicialice()
+        private void Inicialice(bool newOutput)
         {
             try
             {
@@ -88,8 +88,11 @@ namespace InventaryWMS
                 _up = false;
                 _saveFull = false;
                 fillComboBox();
-                comboBoxBill.SelectedIndex = 0;
-                comboBoxShip.SelectedIndex = 0;
+                if (newOutput)
+                {
+                    comboBoxBill.SelectedIndex = 0;
+                    comboBoxShip.SelectedIndex = 0;
+                }
                 comboBoxPart.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
                 comboBoxPart.AutoCompleteSource = AutoCompleteSource.ListItems;
                 comboBoxSerial.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
@@ -150,8 +153,6 @@ namespace InventaryWMS
         private void comboBoxBill_SelectedIndexChanged(object sender, EventArgs e)
         {
             updateSQL.UpdateRemisionDestinatios(_prefix, selectSQL.TakeIdDestinations(comboBoxBill.Text));
-
-
         }
 
 
@@ -377,7 +378,7 @@ namespace InventaryWMS
                         comboBoxPart.Enabled = true;
                         comboBoxLote.Enabled = true;
                         comboBoxSerial.Enabled = true;
-                        Inicialice();
+                        Inicialice(false);
                         //updateSQL.UpdateRemision(_prefix, 4, false, DateTime.Parse(textBoxInitialDate.Text));
                         textBoxF.Text = formShowQuantity.quitity.ToString("D4");
                         dataProducts.DataSource = selectSQL.SearchInRemission(_idClient, formShowQuantity.prefix);
@@ -385,8 +386,7 @@ namespace InventaryWMS
                         dataProducts.Columns[0].Visible = false;
                         dataProducts.Columns[1].Visible = false;
                         dataProducts.Columns[2].Visible = false;
-                        dataProducts.Columns[3].Visible = false;
-                        dataProducts.Columns[4].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+                        dataProducts.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
                         addQuetityBox();
                         forBoxOrQuantity(true);
                         panel2.Enabled = true;
@@ -398,12 +398,13 @@ namespace InventaryWMS
                         comboBoxShip.SelectedItem = selectSQL.TakeDestinatios(remissionHeader.PURCHASE_ORDER_ID_CLIENT, _idClient);
                         dateTimePickerInitialDate.Value = DateTime.Parse(remissionHeader.REMISSION_AT);
                         _saveFull = true;
-                        inicilizeForm(true);
+                        
                         labelRemiss.Visible = false;
                         int gsr = selectSQL.GetStausRemission(_prefix);
                         switch (gsr)
                         {
                             case 1:
+                                inicilizeForm(true);
                                 trueValidacion();
                                 break;
                             case 2:
@@ -509,7 +510,7 @@ namespace InventaryWMS
                 ProcessQuantityOrder(dataTableFromDb);
             }
 
-            erraseListSerial();
+            //erraseListSerial();
         }
 
         private void comboBoxLote_SelectedIndexChanged(object sender, EventArgs e)
@@ -753,7 +754,7 @@ namespace InventaryWMS
                     textBoxNote.Text = "";
                     textBoxSeal.Text = "";
                     textBoxF.Text = "";
-                    Inicialice();
+                    Inicialice(true);
                     inicilizeForm(false);
                 }
 
@@ -1555,8 +1556,7 @@ namespace InventaryWMS
                 dataProducts.Columns[0].Visible = false;
                 dataProducts.Columns[1].Visible = false;
                 dataProducts.Columns[2].Visible = false;
-                dataProducts.Columns[3].Visible = false;
-                dataProducts.Columns[4].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+                dataProducts.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
                 panel2.Enabled = true;
                 comboBoxPart.Text = "";
                 comboBoxLote.Text = "";
@@ -1649,7 +1649,7 @@ namespace InventaryWMS
             numericUpDownOrder.Value = configurations.ORDEROUTPUT;
             numericUpDownRemission.Value = configurations.REMISSIONOUTPUT;
             numericUpDownProforma.Value = configurations.PROFORMAOUTPUT;
-            Inicialice();
+            Inicialice(true);
             remissionInsert(2, true);
             inicilizeForm(true);
         }
